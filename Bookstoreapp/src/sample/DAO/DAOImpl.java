@@ -6,17 +6,18 @@ import sample.model.Product;
 import oracle.jdbc.pool.OracleDataSource;
 import sample.model.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 public class DAOImpl {
+
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "system";
-    final private String pass = "oracle";
+    final private String user = "matee";
+    final private String pass = "test";
 
     public DAOImpl() {
         try {
@@ -30,18 +31,22 @@ public class DAOImpl {
 
     public List<Product> getProducts() {
         List<Product> productList = new ArrayList<>();
-        try {
+        try
+        {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM termek";
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
+            String sql = "SELECT * FROM Termek";
+            rs = stmt.executeQuery("SELECT * FROM Termek");
+            while (rs.next())
+            {
                 Product product = new Product(rs.getInt(1), rs.getString(2),
                         rs.getInt(3), rs.getBoolean(4), rs.getString(5), "Nincs kép");
                 productList.add(product);
             }
 
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
             ex.printStackTrace();
         }
         //getOnStorage(bookLists);
@@ -53,7 +58,7 @@ public class DAOImpl {
         try {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM zene";
+            String sql = "SELECT * FROM Zene";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Music music = new Music(rs.getInt(1), rs.getInt(2));
@@ -71,7 +76,7 @@ public class DAOImpl {
         try {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM szerzo";
+            String sql = "SELECT * FROM Szerzo";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Author author = new Author(rs.getDate(1), rs.getString(2));
@@ -89,7 +94,7 @@ public class DAOImpl {
         try {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM felhasznalo";
+            String sql = "SELECT * FROM Felhasznalo";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 User user1 = new User(rs.getString(1), rs.getString(2),
@@ -103,96 +108,27 @@ public class DAOImpl {
         //getOnStorage(bookLists);
         return productList;
     }
-//
-//    public List<String> getCategories() {
-//        List<String> categories = new ArrayList<>();
-//        try {
-//            Connection conn = ods.getConnection(user, pass);
-//            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//            String sql = "SELECT nev FROM Kategoria";
-//            rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                categories.add(rs.getString(1));
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        Collections.sort(categories);
-//        return categories;
-//    }
-//
-//    public int getCategoryAVG(String category) {
-//        int avg = 0;
-//        try {
-//            Connection conn = ods.getConnection(user, pass);
-//            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//            String sql = "SELECT AVG(Konyv.ar) FROM Konyv, Kategoria, tartozik WHERE kategoria.id = tartozik.kategoria_id AND tartozik.konyv_isbn = konyv.isbn AND kategoria.nev = '" + category + "'";
-//            rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                avg = rs.getInt(1);
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return avg;
-//    }
-//
-//    public List<PublisherMax> getPublisherMaxPrice() {
-//        List<PublisherMax> publisherMaxList = new ArrayList<>();
-//        try {
-//            Connection conn = ods.getConnection(user, pass);
-//            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//            String sql = "SELECT kiado.id, kiado.nev, konyv.cim, MAX(konyv.ar) FROM konyv, kiado WHERE konyv.kiado_id = kiado.id GROUP BY konyv.cim, kiado.id, kiado.nev";
-//            rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                PublisherMax publisherMax = new PublisherMax(rs.getInt(1),
-//                        rs.getString(2), rs.getString(3), rs.getInt(4));
-//                publisherMaxList.add(publisherMax);
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return publisherMaxList;
-//    }
-//
-//    public List<Toplist> getToplist() {
-//        List<Toplist> toplists = new ArrayList<>();
-//        try {
-//            Connection conn = ods.getConnection(user, pass);
-//            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//            String sql = "SELECT szerzo.nev, konyv.cim, COUNT(rendeles.id) as darab FROM szerzo, konyv, rendeles, tartalmazza, irta WHERE szerzo.id = irta.szerzo_id AND irta.konyv_isbn = konyv.isbn AND konyv.isbn = tartalmazza.konyv_isbn AND tartalmazza.rendeles_id = rendeles.id GROUP BY konyv.cim, szerzo.nev ORDER BY darab DESC";
-//            rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                Toplist toplist = new Toplist(rs.getString(1), rs.getString(2),
-//                        rs.getInt(3));
-//                toplists.add(toplist);
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return toplists;
-//    }
-//
-//    public List<CategoryBook> getCategoryBooks() {
-//        List<CategoryBook> categoryBooks = new ArrayList<>();
-//        try {
-//            Connection conn = ods.getConnection(user, pass);
-//            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//            String sql = "SELECT kategoria.nev, COUNT(konyv.isbn) as darab FROM kategoria, konyv, tartozik WHERE kategoria.id = tartozik.kategoria_id AND tartozik.konyv_isbn = konyv.isbn GROUP BY kategoria.nev ORDER BY darab DESC";
-//            rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                CategoryBook categoryBook = new CategoryBook(rs.getString(1), rs.getInt(2));
-//                categoryBooks.add(categoryBook);
-//            }
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return categoryBooks;
-//    }
+    public boolean AddUser(User adduser)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Felhasznalo(email, felhasznalonev, jelszo, teljes_nev,lakcim,egyenleg,bejelentkezett) \n" +
+                    "VALUES(?,?,?,?,?,?,?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, adduser.getEmail());
+            stmt.setString(2, adduser.getUsername());
+            stmt.setString(3, adduser.getPass());
+            stmt.setString(4, adduser.getFullname());
+            stmt.setString(5, adduser.getAddress());
+            stmt.setTimestamp(6,new Timestamp(System.currentTimeMillis()));
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 
 }
