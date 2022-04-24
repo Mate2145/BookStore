@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
     <children>
         <MenuBar layoutY="2.0">
             <menus>
@@ -28,15 +25,16 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="716.0">
+        <TableView fx:id="tableView" layoutX="-5.0" layoutY="27.0" prefHeight="374.0" prefWidth="1069.0">
             <columns>
                 <TableColumn fx:id="emailCol" prefWidth="41.0" text="email" />
-                <TableColumn fx:id="usernameCol" prefWidth="212.0" text="Username" />
-                <TableColumn fx:id="passCol" prefWidth="212.0" text="Password" />
-                <TableColumn fx:id="fullnameCol" prefWidth="212.0" text="Full name" />
-                <TableColumn fx:id="adressCol" prefWidth="212.0" text="Adress" />
-                <TableColumn fx:id="adminCol" prefWidth="212.0" text="Admin" />
-                <TableColumn fx:id="freqCol" prefWidth="212.0" text="Freq Buyer" />
+                <TableColumn fx:id="usernameCol" prefWidth="153.99999237060547" text="Username" />
+                <TableColumn fx:id="passCol" prefWidth="138.39996337890625" text="Password" />
+                <TableColumn fx:id="fullnameCol" prefWidth="184.99993896484375" text="Full name" />
+                <TableColumn fx:id="adressCol" minWidth="0.0" prefWidth="98.4000244140625" text="Adress" />
+                <TableColumn fx:id="balanceCol" prefWidth="139.4000244140625" text="Balance" />
+                <TableColumn fx:id="adminCol" prefWidth="83.0" text="Admin" />
+                <TableColumn fx:id="freqCol" prefWidth="232.00006103515625" text="Freq Buyer" />
 
             </columns>
         </TableView>

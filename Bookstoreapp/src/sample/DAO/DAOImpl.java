@@ -1,18 +1,12 @@
 package sample.DAO;
 
-import sample.model.Author;
-import sample.model.Music;
-import sample.model.Product;
+import sample.model.*;
 import oracle.jdbc.pool.OracleDataSource;
-import sample.model.User;
-import java.time.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
-
-import oracle.sql.TIMESTAMP;
 
 public class DAOImpl {
     private ResultSet rs;
@@ -68,6 +62,23 @@ public class DAOImpl {
         }
         return musicList;
     }
+    public List<Film> getFilms() {
+        List<Film> filmList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM zene";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Film film = new Film(rs.getInt(1), rs.getInt(2));
+                filmList.add(film);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return filmList;
+    }
 
     public List<Author> getAuthors() {
         List<Author> authorList = new ArrayList<>();
@@ -96,7 +107,7 @@ public class DAOImpl {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 User user1 = new User(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getBoolean(6),rs.getBoolean(7));
+                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getDate(7), rs.getBoolean(8),rs.getBoolean(9));
                 productList.add(user1);
             }
 

@@ -39,8 +39,7 @@ public class Main extends Application implements Initializable
     private TableColumn<Product, Boolean> electronicalCol;
     @FXML
     private TableColumn<Product, String> publisherCol;
-    @FXML
-    private TableColumn<Product, Date> inputCol;
+
 
     @Override
     public void start(Stage primaryStage) throws IOException{
@@ -70,6 +69,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuTermek(ActionEvent actionEvent) {
+
     }
 
     public void onMenuUser(ActionEvent actionEvent) {
@@ -77,6 +77,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuFilm(ActionEvent actionEvent) {
+        Main.loadFXML("film.fxml");
     }
 
     public void onMenuKeszlet(ActionEvent actionEvent) {
@@ -117,7 +118,6 @@ public class Main extends Application implements Initializable
         priceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getPrice()));
         electronicalCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isElectronical()));
         publisherCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPublisher()));
-        inputCol.setCellValueFactory(c -> new SimpleObjectProperty<Date>(c.getValue().getInput_time()));
         refreshTable();
     }
 
