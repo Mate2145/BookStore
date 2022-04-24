@@ -5,11 +5,14 @@ import sample.model.Music;
 import sample.model.Product;
 import oracle.jdbc.pool.OracleDataSource;
 import sample.model.User;
+import java.time.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
+
+import oracle.sql.TIMESTAMP;
 
 public class DAOImpl {
     private ResultSet rs;
@@ -37,7 +40,7 @@ public class DAOImpl {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Product product = new Product(rs.getInt(1), rs.getString(2),
-                        rs.getInt(3), rs.getBoolean(4), rs.getString(5), "Nincs kép");
+                        rs.getInt(3), rs.getBoolean(4), rs.getString(5), rs.getDate(6));
                 productList.add(product);
             }
 
