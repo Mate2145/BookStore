@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class musicController implements Initializable {
 
-    public TableView tableView;
+    public TableView<Music> tableView;
     public TableColumn<Music,Number> idCol;
     public TableColumn<Music,Number> lenCol;
 
