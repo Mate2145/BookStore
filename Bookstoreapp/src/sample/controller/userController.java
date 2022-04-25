@@ -28,6 +28,7 @@ public class userController implements Initializable {
 
     public void onBack(ActionEvent actionEvent)
     {
+        //Main.loadFXML("add_user.fxml");
         Main.loadFXML("sample.fxml");
     }
 
@@ -49,4 +50,11 @@ public class userController implements Initializable {
         tableView.getItems().setAll(new DAOImpl().getUsers());
     }
 
+    public void onUpdate(ActionEvent actionEvent)
+    {
+        Main.loadFXML("add_user.fxml");
+    }
+
+    public void onDelete(ActionEvent actionEvent) {
+    }
 }

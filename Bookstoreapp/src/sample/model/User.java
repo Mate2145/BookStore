@@ -1,6 +1,6 @@
 package sample.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class User {
     private String email;
@@ -8,22 +8,43 @@ public class User {
     private String pass;
     private String fullname;
     private String address;
-    private int balance;
-    private Date login_date;
+    private double balance;
     private boolean admin;
     private boolean freqbuyer;
+    private Date loggedin;
 
 
-    public User(String email, String username, String pass, String fullname, String address, int balance, Date login_date, boolean admin, boolean freqbuyer) {
+    public User(String email, String username, String pass, String fullname, String address, boolean admin, boolean freqbuyer) {
         this.email = email;
         this.username = username;
         this.pass = pass;
         this.fullname = fullname;
         this.address = address;
-        this.balance = balance;
-        this.login_date = login_date;
         this.admin = admin;
         this.freqbuyer = freqbuyer;
+    }
+
+    public User(String email, String username, String pass, String fullname, String address) {
+        this.email = email;
+        this.username = username;
+        this.pass = pass;
+        this.fullname = fullname;
+        this.address = address;
+        this.admin = false;
+        this.freqbuyer = false;
+    }
+
+    public User(String email, String username, String pass, String fullname, String address,double balance,boolean admin,boolean freqbuyer,Date loggedin)
+    {
+        this.email = email;
+        this.username = username;
+        this.pass = pass;
+        this.fullname = fullname;
+        this.address = address;
+        this.admin = false;
+        this.freqbuyer = false;
+        this.balance = balance;
+        this.loggedin = loggedin;
     }
 
     public String getEmail() {
@@ -66,14 +87,6 @@ public class User {
         this.address = address;
     }
 
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
     public boolean isAdmin() {
         return admin;
     }
@@ -90,11 +103,19 @@ public class User {
         this.freqbuyer = freqbuyer;
     }
 
-    public Date getLogin_date() {
-        return login_date;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setLogin_date(Date login_date) {
-        this.login_date = login_date;
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public Date getLoggedin() {
+        return loggedin;
+    }
+
+    public void setLoggedin(Date loggedin) {
+        this.loggedin = loggedin;
     }
 }

@@ -1,16 +1,15 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.beans.property.*;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -19,9 +18,6 @@ import sample.model.Product;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Main extends Application implements Initializable
@@ -39,7 +35,8 @@ public class Main extends Application implements Initializable
     private TableColumn<Product, Boolean> electronicalCol;
     @FXML
     private TableColumn<Product, String> publisherCol;
-
+    @FXML
+    private TableColumn<Product, String> imageCol;
 
     @Override
     public void start(Stage primaryStage) throws IOException{
@@ -69,7 +66,6 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuTermek(ActionEvent actionEvent) {
-
     }
 
     public void onMenuUser(ActionEvent actionEvent) {
@@ -77,7 +73,6 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuFilm(ActionEvent actionEvent) {
-        Main.loadFXML("film.fxml");
     }
 
     public void onMenuKeszlet(ActionEvent actionEvent) {
@@ -118,7 +113,8 @@ public class Main extends Application implements Initializable
         priceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getPrice()));
         electronicalCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isElectronical()));
         publisherCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPublisher()));
-        refreshTable();
+        imageCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getImageString()));
+        //refreshTable();
     }
 
     private void refreshTable() {
