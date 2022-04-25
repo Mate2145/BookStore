@@ -1,10 +1,12 @@
 package sample.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
@@ -21,7 +23,7 @@ public class userController implements Initializable {
     public TableColumn<User,String > passCol;
     public TableColumn<User,String > fullnameCol;
     public TableColumn<User,String > adressCol;
-    public TableColumn<User,Boolean > adminCol;
+    public TableColumn<User,Number> balanceCol;
     public TableColumn<User,Boolean > freqCol;
 
     public void onBack(ActionEvent actionEvent)
@@ -38,7 +40,7 @@ public class userController implements Initializable {
         passCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPass()));
         fullnameCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullname()));
         adressCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddress()));
-        adminCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isAdmin()));
+        balanceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getBalance()));
         freqCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isFreqbuyer()));
         refreshTable();
     }

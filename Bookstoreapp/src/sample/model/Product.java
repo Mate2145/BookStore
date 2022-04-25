@@ -1,28 +1,33 @@
 package sample.model;
 
+
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Product {
     private int id;
     private String name;
     private int price;
     private boolean electronical;
     private String publisher;
-    private String imageString;
+    private Date input_time;
 
-    public Product(int id, String name, int price, boolean electronical, String publisher, String imageString) {
+
+    public Product(int id, String name, int price, boolean electronical, String publisher, Date input_time) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.electronical = electronical;
         this.publisher = publisher;
-        this.imageString = imageString;
+        this.input_time = input_time;
     }
 
-    public Product(String name, int price, boolean elektronical, String publisher, String imageString) {
+    public Product(String name, int price, boolean electronical, String publisher, Date input_time) {
         this.name = name;
         this.price = price;
-        this.electronical = elektronical;
+        this.electronical = electronical;
         this.publisher = publisher;
-        this.imageString = imageString;
+        this.input_time = input_time;
     }
 
     public int getId() {
@@ -65,11 +70,11 @@ public class Product {
         this.publisher = publisher;
     }
 
-    public String getImageString() {
-        return imageString;
+    public Date getInput_time() {
+        return input_time;
     }
 
-    public void setImageString(String imageString) {
-        this.imageString = imageString;
+    public void setInput_time(Date input_time) {
+        this.input_time = input_time;
     }
 }

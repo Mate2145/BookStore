@@ -28,7 +28,7 @@
                 <TableColumn fx:id="passCol" prefWidth="212.0" text="Password" />
                 <TableColumn fx:id="fullnameCol" prefWidth="212.0" text="Full name" />
                 <TableColumn fx:id="adressCol" prefWidth="212.0" text="Adress" />
-                <TableColumn fx:id="adminCol" prefWidth="212.0" text="Admin" />
+                <TableColumn fx:id="balanceCol" prefWidth="212.0" text="Balance" />
                 <TableColumn fx:id="freqCol" prefWidth="212.0" text="Freq Buyer" />
 
             </columns>
