@@ -112,7 +112,7 @@ public class DAOImpl {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 User user1 = new User(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getDate(7), rs.getBoolean(8),rs.getBoolean(9));
+                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getBoolean(7), rs.getBoolean(8),rs.getDate(9));
                 productList.add(user1);
             }
 
