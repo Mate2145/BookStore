@@ -13,8 +13,8 @@ public class DAOImpl {
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "matee";
-    final private String pass = "test";
+    final private String user = "ADAM";
+    final private String pass = "adam";
 
     public DAOImpl() {
         try {
@@ -36,6 +36,7 @@ public class DAOImpl {
             rs = stmt.executeQuery("SELECT * FROM Termek");
             while (rs.next())
             {
+
                 Product product = new Product(rs.getInt(1), rs.getString(2),
                         rs.getInt(3), rs.getBoolean(4), rs.getString(5), rs.getDate(6));
                 productList.add(product);
@@ -66,6 +67,23 @@ public class DAOImpl {
             ex.printStackTrace();
         }
         return musicList;
+    }
+    public List<Book> getBooks() {
+        List<Book> bookList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Zene";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Book book = new Book(rs.getInt(1), rs.getInt(2));
+                bookList.add(book);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return bookList;
     }
     public List<Film> getFilms() {
         List<Film> filmList = new ArrayList<>();
@@ -111,8 +129,9 @@ public class DAOImpl {
             String sql = "SELECT * FROM Felhasznalo";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
+                System.out.println(rs.getInt("EGYENLEG"));
                 User user1 = new User(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getBoolean(7), rs.getBoolean(8),rs.getDate(9));
+                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getBoolean("TORZSVASARLO"));
                 productList.add(user1);
             }
 

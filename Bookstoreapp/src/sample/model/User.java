@@ -8,43 +8,35 @@ public class User {
     private String pass;
     private String fullname;
     private String address;
-    private double balance;
+    private int balance;
     private boolean admin;
     private boolean freqbuyer;
     private Date loggedin;
 
 
-    public User(String email, String username, String pass, String fullname, String address, boolean admin, boolean freqbuyer) {
-        this.email = email;
-        this.username = username;
-        this.pass = pass;
-        this.fullname = fullname;
-        this.address = address;
-        this.admin = admin;
-        this.freqbuyer = freqbuyer;
-    }
 
-    public User(String email, String username, String pass, String fullname, String address) {
-        this.email = email;
-        this.username = username;
-        this.pass = pass;
-        this.fullname = fullname;
-        this.address = address;
-        this.admin = false;
-        this.freqbuyer = false;
-    }
-
-    public User(String email, String username, String pass, String fullname, String address,double balance,boolean admin,boolean freqbuyer,Date loggedin)
+    public User(String email, String username, String pass, String fullname, String address,int balance,boolean admin,boolean freqbuyer,Date loggedin)
     {
         this.email = email;
         this.username = username;
         this.pass = pass;
         this.fullname = fullname;
         this.address = address;
-        this.admin = false;
         this.freqbuyer = false;
         this.balance = balance;
+        this.admin = false;
         this.loggedin = loggedin;
+    }
+
+    public User(String email, String username, String pass, String fullname, String address, int balance,boolean freqbuyer) {
+        this.email = email;
+        this.username = username;
+        this.pass = pass;
+        this.fullname = fullname;
+        this.address = address;
+        this.balance = balance;
+        this.admin = false;
+        this.freqbuyer = freqbuyer;
     }
 
     public String getEmail() {
@@ -103,11 +95,11 @@ public class User {
         this.freqbuyer = freqbuyer;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
@@ -118,4 +110,6 @@ public class User {
     public void setLoggedin(Date loggedin) {
         this.loggedin = loggedin;
     }
+
+
 }

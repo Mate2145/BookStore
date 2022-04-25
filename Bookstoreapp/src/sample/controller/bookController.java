@@ -7,15 +7,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
 import sample.Main;
+import sample.model.Book;
 import sample.model.Music;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class bookController implements Initializable {
-    public TableView<sample.model.Product> tableView;
-    public TableColumn<Music,Number> idCol;
-    public TableColumn<Music,Number> lenCol;
+    public TableView tableView;
+    public TableColumn<Book,Number> idCol;
+    public TableColumn<Book,Number> lenCol;
 
     public void onBack(ActionEvent actionEvent)
     {
@@ -31,6 +32,6 @@ public class bookController implements Initializable {
     }
 
     private void refreshTable() {
-        tableView.getItems().setAll(new DAOImpl().getProducts());
+        tableView.getItems().setAll(new DAOImpl().getBooks());
     }
 }

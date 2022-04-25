@@ -1,6 +1,7 @@
 package sample.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -23,7 +24,6 @@ public class userController implements Initializable {
     public TableColumn<User,String > fullnameCol;
     public TableColumn<User,String > adressCol;
     public TableColumn<User,Number> balanceCol;
-    public TableColumn<User,Boolean > adminCol;
     public TableColumn<User,Boolean > freqCol;
 
     public void onBack(ActionEvent actionEvent)
@@ -41,7 +41,6 @@ public class userController implements Initializable {
         fullnameCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullname()));
         adressCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddress()));
         balanceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getBalance()));
-        adminCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isAdmin()));
         freqCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isFreqbuyer()));
         refreshTable();
     }
