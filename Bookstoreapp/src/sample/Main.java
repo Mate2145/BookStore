@@ -113,7 +113,6 @@ public class Main extends Application implements Initializable
         priceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getPrice()));
         electronicalCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isElectronical()));
         publisherCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPublisher()));
-        imageCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getImageString()));
         refreshTable();
     }
 
