@@ -1,24 +1,32 @@
 package sample.controller;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import sample.DAO.DAOImpl;
 import sample.Main;
 import sample.model.Author;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class authorController implements Initializable {
-    public TableView tableView;
+
+    @FXML
+    public TableView<Author> tableView;
+    @FXML
     public TableColumn<Author,String> birthdayCol;
+    @FXML
     public TableColumn<Author,String> nameCol;
+    @FXML
+    public TextField nameTextField;
+    @FXML
+    public DatePicker dateOfBirthPicker;
 
     public void onBack(ActionEvent actionEvent)
     {
@@ -35,5 +43,8 @@ public class authorController implements Initializable {
 
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getAuthors());
+    }
+
+    public void submitAuthor(ActionEvent event) {
     }
 }

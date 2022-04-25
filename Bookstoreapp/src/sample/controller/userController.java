@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class userController implements Initializable {
-    public TableView tableView;
+    public TableView<User> tableView;
     public TableColumn<User,String > emailCol;
     public TableColumn<User,String > usernameCol;
     public TableColumn<User,String > passCol;
@@ -53,5 +53,8 @@ public class userController implements Initializable {
     }
 
     public void onDelete(ActionEvent actionEvent) {
+    }
+
+    public void userSubmit(ActionEvent event) {
     }
 }

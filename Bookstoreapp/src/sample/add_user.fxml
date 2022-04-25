@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userinsertController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
     
     <Label layoutX="28.0" layoutY="22.0" prefHeight="29.0" prefWidth="68.0" text="User Input" />
     <Label layoutX="22.0" layoutY="72.0" prefHeight="29.0" prefWidth="68.0" text="Email" />
@@ -21,7 +21,7 @@
     <TextField layoutX="69.0" layoutY="296.0" prefHeight="25.0" prefWidth="230.0" />
     <Label layoutX="22.0" layoutY="338.0" prefHeight="29.0" prefWidth="68.0" text="Egyenleg" />
     <Spinner layoutX="82.0" layoutY="340.0" />
-   <Button fx:id="submitbutt" layoutX="253.0" layoutY="353.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="25.0" prefWidth="94.0" text="Submit" />
-   <Button fx:id="backbutt" layoutX="353.0" layoutY="353.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="94.0" text="Back" />
+   <Button layoutX="253.0" layoutY="353.0" mnemonicParsing="false" onAction="#userSubmit" prefHeight="25.0" prefWidth="94.0" text="Submit" />
+   <Button layoutX="353.0" layoutY="353.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="94.0" text="Back" />
 
 </AnchorPane>
