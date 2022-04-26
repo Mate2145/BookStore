@@ -138,6 +138,7 @@ public class DAOImpl {
         }
         return productList;
     }
+
     public boolean AddUser(User adduser)
     {
         try
@@ -160,5 +161,218 @@ public class DAOImpl {
         }
         return false;
     }
+
+    public boolean AddProduct(Product product)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Termek(nev, ar, elektronikus, kiado, beviteli_ido) VALUES(?,?, ?,?, TO_TIMESTAMP(?));";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, product.getName());
+            stmt.setInt(2, product.getPrice());
+            stmt.setBoolean(3, product.isElectronical());
+            stmt.setString(4, product.getPublisher());
+            stmt.setTimestamp(5,new Timestamp(System.currentTimeMillis()));
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddMusic(Music addmusic)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Zene(id, hossz) VALUES(?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, addmusic.getId());
+            stmt.setInt(2, addmusic.getLen());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddMovie(Film addfilm)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Film(id, hossz) VALUES(?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, addfilm.getId());
+            stmt.setInt(2, addfilm.getLen());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddBook(Book addbook)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Konyv(id, oldalszam) VALUES(?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, addbook.getId());
+            stmt.setInt(2, addbook.getLen());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddAuthor(Author addauthor)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Szerzo(szul_datum, nev) VALUES(TO_DATE(?),?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setDate(1, addauthor.getBirth_date());
+            stmt.setString(2, addauthor.getName());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddGenre(Genre addgenre)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Mufaj(almufaj, mufaj) VALUES(?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, addgenre.getSubgenre());
+            stmt.setString(2, addgenre.getGenrename());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddStore(Store addstore)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Aruhaz(email, nev, cim) VALUES(?,?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, addstore.getEmail());
+            stmt.setString(2, addstore.getName());
+            stmt.setString(3, addstore.getAddress());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddProductAuth(ProductAuthor pauthor)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Szerzoje(id, nev, szul_datum) VALUES(?,?, TO_DATE(?));";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, pauthor.getId());
+            stmt.setString(2, pauthor.getName());
+            stmt.setDate(3, pauthor.getBirth_date());
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean AddOrder(Order addorder)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Megrendel(id, f_email, a_email, mikor, mennyit, hazhozszallitas) VALUES(?, ?,?, TO_TIMESTAMP(?), ?, ?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, addorder.getId());
+            stmt.setString(2, addorder.getUser_email());
+            stmt.setString(3, addorder.getStore_email());
+            stmt.setDate(4, addorder.getWhen());
+            stmt.setInt(5, addorder.getQuantity());
+            stmt.setBoolean(6, addorder.isOrdertype());
+
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean OnStock(OnStock onStock)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Keszleten(id, a_email, mennyi) VALUES(?,?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, onStock.getId());
+            stmt.setString(2, onStock.getStore_email());
+            stmt.setInt(3, onStock.getQuantity());
+
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean valami(OnStock onStock)
+    {
+        try
+        {
+            String INSERT_CONTACT = "INSERT INTO Keszleten(id, a_email, mennyi) VALUES(?,?,?);";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, onStock.getId());
+            stmt.setString(2, onStock.getStore_email());
+            stmt.setInt(3, onStock.getQuantity());
+
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
 
 }

@@ -2,6 +2,8 @@ package sample.model;
 
 import oracle.sql.DATE;
 
+import java.sql.Date;
+
 public class ProductAuthor {
     private int id;
     private String name;
@@ -29,7 +31,7 @@ public class ProductAuthor {
         this.name = name;
     }
 
-    public DATE getBirth_date() {
+    public Date getBirth_date() {
         return birth_date;
     }
 

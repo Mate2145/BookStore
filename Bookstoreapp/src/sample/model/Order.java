@@ -2,26 +2,30 @@ package sample.model;
 
 import oracle.sql.TIMESTAMP;
 
+import java.sql.Date;
+
 public class Order {
-    private String id;
+    private int id;
     private String user_email;
     private String store_email;
-    private TIMESTAMP when;
+    private Date when;
     private int quantity;
+    private boolean ordertype;
 
-    public Order(String id, String user_email, String store_email, TIMESTAMP when, int quantity) {
+    public Order(int id, String user_email, String store_email, Date when, int quantity,boolean ordertype) {
         this.id = id;
         this.user_email = user_email;
         this.store_email = store_email;
         this.when = when;
         this.quantity = quantity;
+        this.ordertype = ordertype;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -41,11 +45,11 @@ public class Order {
         this.store_email = store_email;
     }
 
-    public TIMESTAMP getWhen() {
+    public Date getWhen() {
         return when;
     }
 
-    public void setWhen(TIMESTAMP when) {
+    public void setWhen(Date when) {
         this.when = when;
     }
 
@@ -55,5 +59,13 @@ public class Order {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isOrdertype() {
+        return ordertype;
+    }
+
+    public void setOrdertype(boolean ordertype) {
+        this.ordertype = ordertype;
     }
 }
