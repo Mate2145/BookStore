@@ -158,7 +158,6 @@ public class DAOImpl {
     }
 
     public User AddUser(User adduser)
-
     {
         try
         {

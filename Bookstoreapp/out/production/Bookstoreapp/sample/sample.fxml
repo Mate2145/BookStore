@@ -3,45 +3,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
-    <children>
-        <MenuBar layoutY="2.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuTermek" text="TERMEK" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuUser" text="FELHASZNALO" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuFilm" text="FILM" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuKeszlet" text="KESZLETEN" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuKonyv" text="KONYV" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuMegrendel" text="MEGRENDEL" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuMufaj" text="MUFAJ" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuMufaja" text="MUFAJA" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuSzerzo" text="SZERZO" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuSzerzoje" text="SZERZOJE" />
-                        <MenuItem mnemonicParsing="false" onAction="#onMenuZene" text="ZENE" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <TableView fx:id="tableView" layoutY="29.0" prefHeight="372.0" prefWidth="814.0">
-            <columns>
-                <TableColumn fx:id="idCol" prefWidth="57.80001986026764" text="id" />
-                <TableColumn fx:id="nameCol" prefWidth="258.1999740600586" text="név" />
-                <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="151.0" text="ár" />
-                <TableColumn fx:id="electronicalCol" minWidth="0.0" prefWidth="111.80001831054688" text="elektronikus" />
-                <TableColumn fx:id="publisherCol" prefWidth="236.4000244140625" text="kiadó" />
-            </columns>
-        </TableView>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="814.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Main">
+    <MenuBar layoutY="2.0">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#onMenuTermek" text="TERMEK"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuUser" text="FELHASZNALO"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuFilm" text="FILM"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuKeszlet" text="KESZLETEN"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuKonyv" text="KONYV"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuMegrendel" text="MEGRENDEL"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuMufaj" text="MUFAJ"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuMufaja" text="MUFAJA"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuSzerzo" text="SZERZO"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuSzerzoje" text="SZERZOJE"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuZene" text="ZENE"/>
+        </Menu>
+    </MenuBar>
+    <TableView fx:id="tableView" layoutY="29.0" prefHeight="317.0" prefWidth="814.0">
+        <columns>
+            <TableColumn fx:id="idCol" prefWidth="57.80001986026764" text="id"/>
+            <TableColumn fx:id="nameCol" prefWidth="279.0" text="név"/>
+            <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="122.0" text="ár"/>
+            <TableColumn fx:id="electronicalCol" minWidth="0.0" prefWidth="84.0" text="elektronikus"/>
+            <TableColumn fx:id="publisherCol" prefWidth="270.0" text="kiadó"/>
+        </columns>
+    </TableView>
+    <Button layoutX="361.0" layoutY="361.0" mnemonicParsing="false" onAction="#newProduct" text="Új hozzáadása"/>
 </AnchorPane>

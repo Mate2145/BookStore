@@ -7,9 +7,9 @@ import java.sql.Date;
 public class ProductAuthor {
     private int id;
     private String name;
-    private DATE birth_date;
+    private Date birth_date;
 
-    public ProductAuthor(int id, String name, DATE birth_date) {
+    public ProductAuthor(int id, String name, Date birth_date) {
         this.id = id;
         this.name = name;
         this.birth_date = birth_date;
@@ -35,7 +35,7 @@ public class ProductAuthor {
         return birth_date;
     }
 
-    public void setBirth_date(DATE birth_date) {
+    public void setBirth_date(Date birth_date) {
         this.birth_date = birth_date;
     }
 }
