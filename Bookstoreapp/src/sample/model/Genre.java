@@ -24,4 +24,9 @@ public class Genre {
     public void setGenrename(String genrename) {
         this.genrename = genrename;
     }
+
+    @Override
+    public String toString() {
+        return subgenre + " - " + genrename;
+    }
 }

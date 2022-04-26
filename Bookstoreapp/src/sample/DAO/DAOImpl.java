@@ -4,8 +4,6 @@ import sample.model.*;
 import oracle.jdbc.pool.OracleDataSource;
 
 import java.sql.*;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 
 public class DAOImpl {
@@ -139,7 +137,28 @@ public class DAOImpl {
         return productList;
     }
 
+
+
+    public List<Genre> getGenres() {
+        List<Genre> genreList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Mufaj";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Genre genre = new Genre(rs.getString(1), rs.getString(2));
+                genreList.add(genre);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return genreList;
+    }
+
     public User AddUser(User adduser)
+
     {
         try
         {
