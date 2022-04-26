@@ -27,6 +27,6 @@ public class Genre {
 
     @Override
     public String toString() {
-        return subgenre + " - " + genrename;
+        return subgenre;
     }
 }

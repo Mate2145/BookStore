@@ -13,8 +13,8 @@ public class DAOImpl {
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "ADAM";
-    final private String pass = "adam";
+    final private String user = "TEST";
+    final private String pass = "test";
 
     public DAOImpl() {
         try {
@@ -32,8 +32,8 @@ public class DAOImpl {
         {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM Termek";
-            rs = stmt.executeQuery("SELECT * FROM Termek");
+            String sql = "SELECT * FROM Termek ORDER BY id";
+            rs = stmt.executeQuery(sql);
             while (rs.next())
             {
 
@@ -48,6 +48,24 @@ public class DAOImpl {
             ex.printStackTrace();
         }
         return productList;
+    }
+
+    public int getLastProductId() {
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT id FROM Termek ORDER BY id DESC";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return -1;
     }
 
     public List<Music> getMusics() {
@@ -196,6 +214,47 @@ public class DAOImpl {
         return productAuthorList;
     }
 
+    public List<OnStock> getOnStocks() {
+        List<OnStock> onStockList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Keszleten";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                OnStock onStock = new OnStock(rs.getInt(1), rs.getString(2),rs.getInt(3));
+                onStockList.add(onStock);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return onStockList;
+    }
+
+    public List<Order> getOrder() {
+        List<Order> orderList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Megrendel";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Order order = new Order(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getDate(4), rs.getInt(5), rs.getBoolean(6));
+                orderList.add(order);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return orderList;
+    }
+
     public User AddUser(User adduser)
     {
         try
@@ -227,41 +286,31 @@ public class DAOImpl {
         return adduser;
     }
 
-    public Product AddProduct(Product product)
+    public void addProduct(Product product)
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Termek(nev, ar, elektronikus, kiado, beviteli_ido) VALUES(?,?, ?,?, TO_TIMESTAMP(?));";
+            String INSERT_CONTACT = "INSERT INTO Termek(nev, ar, elektronikus, kiado) VALUES(?,?,?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getPrice());
-            stmt.setBoolean(3, product.isElectronical());
+            stmt.setInt(3, product.isElectronical() ? 1 : 0);
             stmt.setString(4, product.getPublisher());
-            stmt.setTimestamp(5,new Timestamp(System.currentTimeMillis()));
 
             int affectedRows = stmt.executeUpdate();
-            if(affectedRows == 0)
-            {
-                return null;
-            }
 
-            if(product.getId() <= 0) { // INSERT
-                ResultSet genKeys = stmt.getGeneratedKeys();
-                if (genKeys.next()) {
-                    product.setId(genKeys.getInt(1));
-                }
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
             }
         }
-
         catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return product;
     }
 
-    public boolean AddMusic(Music addmusic)
+    public boolean addMusic(Music addmusic)
     {
         try
         {
@@ -279,7 +328,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddMovie(Film addfilm)
+    public boolean addMovie(Film addfilm)
     {
         try
         {
@@ -297,7 +346,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddBook(Book addbook)
+    public boolean addBook(Book addbook)
     {
         try
         {
@@ -315,7 +364,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddAuthor(Author addauthor)
+    public boolean addAuthor(Author addauthor)
     {
         try
         {
@@ -333,7 +382,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddGenre(Genre addgenre)
+    public boolean addGenre(Genre addgenre)
     {
         try
         {
@@ -351,7 +400,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddStore(Store addstore)
+    public boolean addStore(Store addstore)
     {
         try
         {
@@ -370,7 +419,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddProductAuth(ProductAuthor pauthor)
+    public boolean addProductAuth(ProductAuthor pauthor)
     {
         try
         {
@@ -389,7 +438,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddOrder(Order addorder)
+    public boolean addOrder(Order addorder)
     {
         try
         {
@@ -412,7 +461,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean OnStock(OnStock onStock)
+    public boolean addOnStock(OnStock onStock)
     {
         try
         {
@@ -432,7 +481,7 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean AddProductGenre(ProductGenre progenre)
+    public boolean addProductGenre(ProductGenre progenre)
     {
         try
         {

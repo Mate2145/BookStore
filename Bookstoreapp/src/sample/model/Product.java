@@ -23,6 +23,7 @@ public class Product {
     }
 
     public Product(String name, int price, boolean electronical, String publisher, Date input_time) {
+        this.id = 0;
         this.name = name;
         this.price = price;
         this.electronical = electronical;

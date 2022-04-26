@@ -66,6 +66,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuTermek(ActionEvent actionEvent) {
+        Main.loadFXML("sample.fxml");
     }
 
     public void onMenuUser(ActionEvent actionEvent) {
@@ -77,6 +78,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuKeszlet(ActionEvent actionEvent) {
+        Main.loadFXML("onstock.fxml");
     }
 
     public void onMenuKonyv(ActionEvent actionEvent)
@@ -85,6 +87,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuMegrendel(ActionEvent actionEvent) {
+        Main.loadFXML("order.fxml");
     }
 
     public void onMenuMufaj(ActionEvent actionEvent) {
