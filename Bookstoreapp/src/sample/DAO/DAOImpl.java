@@ -354,16 +354,15 @@ public class DAOImpl {
         return false;
     }
 
-    public boolean valami(OnStock onStock)
+    public boolean AddProductGenre(ProductGenre progenre)
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Keszleten(id, a_email, mennyi) VALUES(?,?,?);";
+            String INSERT_CONTACT = "INSERT INTO Mufaja(id, almufaj) VALUES(?,?);";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
-            stmt.setInt(1, onStock.getId());
-            stmt.setString(2, onStock.getStore_email());
-            stmt.setInt(3, onStock.getQuantity());
+            stmt.setInt(1, progenre.getId());
+            stmt.setString(2, progenre.getSubgenre());
 
         }
 
