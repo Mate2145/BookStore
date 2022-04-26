@@ -4,39 +4,41 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.productController">
-   <children>
-      <Label layoutX="207.0" layoutY="14.0" text="TERMÉK HOZZÁADÁSA">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="nameTextField" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="223.0" />
-      <TextField fx:id="priceTextField" layoutX="226.0" layoutY="102.0" />
-      <TextField layoutX="228.0" layoutY="259.0" prefHeight="25.0" prefWidth="223.0" />
-      <Label layoutX="117.0" layoutY="68.0" text="Név:" />
-      <Label layoutX="120.0" layoutY="106.0" text="Ár:" />
-      <Label layoutX="114.0" layoutY="225.0" text="Elektronikus-e?" />
-      <Label layoutX="114.0" layoutY="263.0" text="Kiadó neve:" />
-      <RadioButton layoutX="279.0" layoutY="225.0" mnemonicParsing="false" text="Igen">
-         <toggleGroup>
-            <ToggleGroup fx:id="electronicToggleGroup" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton layoutX="370.0" layoutY="225.0" mnemonicParsing="false" selected="true" text="Nem" toggleGroup="$electronicToggleGroup" />
-      <Button layoutX="203.0" layoutY="345.0" mnemonicParsing="false" onAction="#submitProduct" text="Mentés" />
-      <RadioButton layoutX="231.0" layoutY="303.0" mnemonicParsing="false" selected="true" text="Könyv">
-         <toggleGroup>
-            <ToggleGroup fx:id="productTypeToggleGroup" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton layoutX="337.0" layoutY="303.0" mnemonicParsing="false" text="Film" toggleGroup="$productTypeToggleGroup" />
-      <RadioButton layoutX="434.0" layoutY="303.0" mnemonicParsing="false" text="Zene" toggleGroup="$productTypeToggleGroup" />
-      <Label layoutX="118.0" layoutY="142.0" text="Szerzője:" />
-      <ComboBox fx:id="authorComboBox" layoutX="225.0" layoutY="138.0" prefHeight="25.0" prefWidth="223.0" />
-      <Label layoutX="111.0" layoutY="303.0" text="Típusa:" />
-      <Label layoutX="115.0" layoutY="184.0" text="Műfaja:" />
-      <ComboBox fx:id="genreComboBox" layoutX="225.0" layoutY="180.0" prefHeight="25.0" prefWidth="223.0" />
-      <Button layoutX="333.0" layoutY="345.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.productController">
+   <Label layoutX="207.0" layoutY="14.0" text="TERMÉK HOZZÁADÁSA">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="nameTextField" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="223.0"/>
+   <TextField fx:id="priceTextField" layoutX="226.0" layoutY="102.0"/>
+   <TextField layoutX="228.0" layoutY="259.0" prefHeight="25.0" prefWidth="223.0"/>
+   <Label layoutX="117.0" layoutY="68.0" text="Név:"/>
+   <Label layoutX="120.0" layoutY="106.0" text="Ár:"/>
+   <Label layoutX="114.0" layoutY="225.0" text="Elektronikus-e?"/>
+   <Label layoutX="114.0" layoutY="263.0" text="Kiadó neve:"/>
+   <RadioButton layoutX="279.0" layoutY="225.0" mnemonicParsing="false" text="Igen">
+      <toggleGroup>
+         <ToggleGroup fx:id="electronicToggleGroup"/>
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton layoutX="370.0" layoutY="225.0" mnemonicParsing="false" selected="true" text="Nem"
+                toggleGroup="$electronicToggleGroup"/>
+   <Button layoutX="203.0" layoutY="345.0" mnemonicParsing="false" onAction="#submitProduct" text="Mentés"/>
+   <RadioButton layoutX="231.0" layoutY="303.0" mnemonicParsing="false" selected="true" text="Könyv">
+      <toggleGroup>
+         <ToggleGroup fx:id="productTypeToggleGroup"/>
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton layoutX="337.0" layoutY="303.0" mnemonicParsing="false" text="Film"
+                toggleGroup="$productTypeToggleGroup"/>
+   <RadioButton layoutX="434.0" layoutY="303.0" mnemonicParsing="false" text="Zene"
+                toggleGroup="$productTypeToggleGroup"/>
+   <Label layoutX="118.0" layoutY="142.0" text="Szerzője:"/>
+   <ComboBox fx:id="authorComboBox" layoutX="225.0" layoutY="138.0" prefHeight="25.0" prefWidth="223.0"/>
+   <Label layoutX="111.0" layoutY="303.0" text="Típusa:"/>
+   <Label layoutX="115.0" layoutY="184.0" text="Műfaja:"/>
+   <ComboBox fx:id="genreComboBox" layoutX="225.0" layoutY="180.0" prefHeight="25.0" prefWidth="223.0"/>
+   <Button layoutX="333.0" layoutY="345.0" mnemonicParsing="false" onAction="#onBack" text="Vissza"/>
 </AnchorPane>

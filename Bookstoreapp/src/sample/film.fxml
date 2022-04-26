@@ -3,34 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.filmController">
-    <children>
-        <MenuBar layoutY="2.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.filmController">
+    <MenuBar layoutY="2.0">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza"/>
+        </Menu>
+    </MenuBar>
+    <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="716.0">
+        <columns>
+            <TableColumn fx:id="idCol" prefWidth="41.0" text="id"/>
+            <TableColumn fx:id="lenCol" prefWidth="212.0" text="hossz(perc)"/>
 
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="716.0">
-            <columns>
-                <TableColumn fx:id="idCol" prefWidth="41.0" text="id" />
-                <TableColumn fx:id="lenCol" prefWidth="212.0" text="hossz(perc)" />
-
-            </columns>
-        </TableView>
-    </children>
+        </columns>
+    </TableView>
 </AnchorPane>

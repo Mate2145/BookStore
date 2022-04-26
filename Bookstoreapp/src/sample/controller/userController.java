@@ -1,12 +1,10 @@
 package sample.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
@@ -28,7 +26,6 @@ public class userController implements Initializable {
 
     public void onBack(ActionEvent actionEvent)
     {
-        //Main.loadFXML("add_user.fxml");
         Main.loadFXML("sample.fxml");
     }
 

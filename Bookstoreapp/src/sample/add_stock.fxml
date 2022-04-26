@@ -8,19 +8,18 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.onstockController">
-   <children>
-      <Label layoutX="207.0" layoutY="23.0" text="KÉSZLET HOZZÁADÁSA">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="164.0" layoutY="104.0" text="Termék:" />
-      <Label layoutX="165.0" layoutY="161.0" text="Áruház:" />
-      <Label layoutX="165.0" layoutY="216.0" text="Mennyiség:" />
-      <ComboBox fx:id="productComboBox" layoutX="263.0" layoutY="100.0" prefHeight="25.0" prefWidth="187.0" />
-      <ComboBox fx:id="storeComboBox" layoutX="263.0" layoutY="157.0" prefHeight="25.0" prefWidth="187.0" />
-      <Spinner fx:id="amountSpinner" layoutX="263.0" layoutY="212.0" />
-      <Button layoutX="274.0" layoutY="295.0" mnemonicParsing="false" onAction="#submitStock" text="Mentés" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.onstockController">
+   <Label layoutX="207.0" layoutY="23.0" text="KÉSZLET HOZZÁADÁSA">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <Label layoutX="164.0" layoutY="104.0" text="Termék:"/>
+   <Label layoutX="165.0" layoutY="161.0" text="Áruház:"/>
+   <Label layoutX="165.0" layoutY="216.0" text="Mennyiség:"/>
+   <ComboBox fx:id="productComboBox" layoutX="263.0" layoutY="100.0" prefHeight="25.0" prefWidth="187.0"/>
+   <ComboBox fx:id="storeComboBox" layoutX="263.0" layoutY="157.0" prefHeight="25.0" prefWidth="187.0"/>
+   <Spinner fx:id="amountSpinner" layoutX="263.0" layoutY="212.0"/>
+   <Button layoutX="274.0" layoutY="295.0" mnemonicParsing="false" onAction="#submitStock" text="Mentés"/>
 </AnchorPane>

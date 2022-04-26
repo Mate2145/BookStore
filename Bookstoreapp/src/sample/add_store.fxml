@@ -7,21 +7,20 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.storeController">
-   <children>
-      <Label layoutX="205.0" layoutY="25.0" text="ÁRUHÁZ HOZZÁADÁSA">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="162.0" layoutY="98.0" text="Email:" />
-      <Label layoutX="162.0" layoutY="152.0" text="Áruház neve:" />
-      <Label text="Label" />
-      <Label layoutX="162.0" layoutY="201.0" text="Címe:" />
-      <TextField />
-      <TextField fx:id="emailTextField" layoutX="300.0" layoutY="94.0" />
-      <TextField fx:id="nameTextField" layoutX="300.0" layoutY="148.0" />
-      <TextField fx:id="addressTextField" layoutX="300.0" layoutY="197.0" />
-      <Button layoutX="274.0" layoutY="298.0" mnemonicParsing="false" onAction="#submitStore" text="Mentés" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.storeController">
+   <Label layoutX="205.0" layoutY="25.0" text="ÁRUHÁZ HOZZÁADÁSA">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <Label layoutX="162.0" layoutY="98.0" text="Email:"/>
+   <Label layoutX="162.0" layoutY="152.0" text="Áruház neve:"/>
+   <Label text="Label"/>
+   <Label layoutX="162.0" layoutY="201.0" text="Címe:"/>
+   <TextField/>
+   <TextField fx:id="emailTextField" layoutX="300.0" layoutY="94.0"/>
+   <TextField fx:id="nameTextField" layoutX="300.0" layoutY="148.0"/>
+   <TextField fx:id="addressTextField" layoutX="300.0" layoutY="197.0"/>
+   <Button layoutX="274.0" layoutY="298.0" mnemonicParsing="false" onAction="#submitStore" text="Mentés"/>
 </AnchorPane>
