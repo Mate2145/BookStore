@@ -73,6 +73,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuFilm(ActionEvent actionEvent) {
+        Main.loadFXML("film.fxml");
     }
 
     public void onMenuKeszlet(ActionEvent actionEvent) {
@@ -87,9 +88,11 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuMufaj(ActionEvent actionEvent) {
+        Main.loadFXML("genres.fxml");
     }
 
     public void onMenuMufaja(ActionEvent actionEvent) {
+        Main.loadFXML("product_genre.fxml");
     }
 
     public void onMenuSzerzo(ActionEvent actionEvent)

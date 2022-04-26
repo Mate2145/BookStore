@@ -11,8 +11,8 @@ public class DAOImpl {
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "TEST";
-    final private String pass = "test";
+    final private String user = "ADAM";
+    final private String pass = "adam";
 
     public DAOImpl() {
         try {
@@ -70,7 +70,7 @@ public class DAOImpl {
         try {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM Zene";
+            String sql = "SELECT * FROM Konyv";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Book book = new Book(rs.getInt(1), rs.getInt(2));
@@ -87,7 +87,7 @@ public class DAOImpl {
         try {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT * FROM zene";
+            String sql = "SELECT * FROM Film";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Film film = new Film(rs.getInt(1), rs.getInt(2));
@@ -155,6 +155,25 @@ public class DAOImpl {
             ex.printStackTrace();
         }
         return genreList;
+    }
+
+
+    public List<ProductGenre> getProductGenres() {
+        List<ProductGenre> productGenreList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Mufaja";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                ProductGenre productgenre = new ProductGenre(rs.getInt(1), rs.getString(2));
+                productGenreList.add(productgenre);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return productGenreList;
     }
 
     public User AddUser(User adduser)
