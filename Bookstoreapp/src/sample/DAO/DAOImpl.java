@@ -11,8 +11,8 @@ public class DAOImpl {
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "ADAM";
-    final private String pass = "adam";
+    final private String user = "TEST";
+    final private String pass = "test";
 
     public DAOImpl() {
         try {

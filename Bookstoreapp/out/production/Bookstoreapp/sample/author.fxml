@@ -11,9 +11,8 @@
     </MenuBar>
     <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="716.0">
         <columns>
-            <TableColumn fx:id="birthdayCol" prefWidth="85.59999084472656" text="szuletesnap" />
-            <TableColumn fx:id="nameCol" prefWidth="168.0" text="név" />
-
+            <TableColumn fx:id="birthdayCol" prefWidth="139.59999084472656" text="szuletesnap" />
+            <TableColumn fx:id="nameCol" prefWidth="168.4000244140625" text="név" />
         </columns>
     </TableView>
 </AnchorPane>
