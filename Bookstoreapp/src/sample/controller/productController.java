@@ -3,6 +3,7 @@ package sample.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import sample.Main;
@@ -21,6 +22,8 @@ public class productController {
     public ComboBox<String> authorComboBox;
     @FXML
     public ComboBox<String> genreComboBox;
+    @FXML
+    public Spinner<Integer> lengthSpinner;
 
     public void submitProduct(ActionEvent event) {
     }
