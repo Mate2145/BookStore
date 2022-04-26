@@ -139,7 +139,7 @@ public class DAOImpl {
         return productList;
     }
 
-    public boolean AddUser(User adduser)
+    public User AddUser(User adduser)
     {
         try
         {
@@ -153,16 +153,24 @@ public class DAOImpl {
             stmt.setString(4, adduser.getFullname());
             stmt.setString(5, adduser.getAddress());
             stmt.setTimestamp(6,new Timestamp(System.currentTimeMillis()));
+
+            int affectedRows = stmt.executeUpdate();
+            if(affectedRows == 0)
+            {
+                return null;
+            }
+
+
         }
 
         catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return false;
+        return adduser;
     }
 
-    public boolean AddProduct(Product product)
+    public Product AddProduct(Product product)
     {
         try
         {
@@ -174,13 +182,26 @@ public class DAOImpl {
             stmt.setBoolean(3, product.isElectronical());
             stmt.setString(4, product.getPublisher());
             stmt.setTimestamp(5,new Timestamp(System.currentTimeMillis()));
+
+            int affectedRows = stmt.executeUpdate();
+            if(affectedRows == 0)
+            {
+                return null;
+            }
+
+            if(product.getId() <= 0) { // INSERT
+                ResultSet genKeys = stmt.getGeneratedKeys();
+                if (genKeys.next()) {
+                    product.setId(genKeys.getInt(1));
+                }
+            }
         }
 
         catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return false;
+        return product;
     }
 
     public boolean AddMusic(Music addmusic)
