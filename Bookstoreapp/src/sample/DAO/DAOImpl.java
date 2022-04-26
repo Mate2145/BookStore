@@ -11,8 +11,8 @@ public class DAOImpl {
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "ADAM";
-    final private String pass = "adam";
+    final private String user = "TEST";
+    final private String pass = "test";
 
     public DAOImpl() {
         try {
@@ -253,12 +253,12 @@ public class DAOImpl {
         return orderList;
     }
 
-    public User AddUser(User adduser)
+    public User addUser(User adduser)
     {
         try
         {
             String INSERT_CONTACT = "INSERT INTO Felhasznalo(email, felhasznalonev, jelszo, teljes_nev,lakcim,egyenleg,bejelentkezett) \n" +
-                    "VALUES(?,?,?,?,?,?,?,?);";
+                    "VALUES(?,?,?,?,?,?,?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, adduser.getEmail());
@@ -312,11 +312,17 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Zene(id, hossz) VALUES(?,?);";
+            String INSERT_CONTACT = "INSERT INTO Zene(id, hossz) VALUES(?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, addmusic.getId());
             stmt.setInt(2, addmusic.getLen());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -330,11 +336,17 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Film(id, hossz) VALUES(?,?);";
+            String INSERT_CONTACT = "INSERT INTO Film(id, hossz) VALUES(?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, addfilm.getId());
             stmt.setInt(2, addfilm.getLen());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -348,11 +360,17 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Konyv(id, oldalszam) VALUES(?,?);";
+            String INSERT_CONTACT = "INSERT INTO Konyv(id, oldalszam) VALUES(?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, addbook.getId());
             stmt.setInt(2, addbook.getLen());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -366,11 +384,17 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Szerzo(szul_datum, nev) VALUES(TO_DATE(?),?);";
+            String INSERT_CONTACT = "INSERT INTO Szerzo(szul_datum, nev) VALUES(?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setDate(1, addauthor.getBirth_date());
             stmt.setString(2, addauthor.getName());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -384,11 +408,17 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Mufaj(almufaj, mufaj) VALUES(?,?);";
+            String INSERT_CONTACT = "INSERT INTO Mufaj(almufaj, mufaj) VALUES(?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, addgenre.getSubgenre());
             stmt.setString(2, addgenre.getGenrename());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -402,12 +432,18 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Aruhaz(email, nev, cim) VALUES(?,?,?);";
+            String INSERT_CONTACT = "INSERT INTO Aruhaz(email, nev, cim) VALUES(?,?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, addstore.getEmail());
             stmt.setString(2, addstore.getName());
             stmt.setString(3, addstore.getAddress());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -421,12 +457,18 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Szerzoje(id, nev, szul_datum) VALUES(?,?, TO_DATE(?));";
+            String INSERT_CONTACT = "INSERT INTO Szerzoje(id, nev, szul_datum) VALUES(?,?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, pauthor.getId());
             stmt.setString(2, pauthor.getName());
             stmt.setDate(3, pauthor.getBirth_date());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -440,7 +482,7 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Megrendel(id, f_email, a_email, mikor, mennyit, hazhozszallitas) VALUES(?, ?,?, TO_TIMESTAMP(?), ?, ?);";
+            String INSERT_CONTACT = "INSERT INTO Megrendel(id, f_email, a_email, mikor, mennyit, hazhozszallitas) VALUES(?, ?, ?, ?, ?, ?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, addorder.getId());
@@ -449,6 +491,12 @@ public class DAOImpl {
             stmt.setDate(4, addorder.getWhen());
             stmt.setInt(5, addorder.getQuantity());
             stmt.setBoolean(6, addorder.isOrdertype());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
 
         }
 
@@ -463,13 +511,18 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Keszleten(id, a_email, mennyi) VALUES(?,?,?);";
+            String INSERT_CONTACT = "INSERT INTO Keszleten(id, a_email, mennyi) VALUES(?,?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, onStock.getId());
             stmt.setString(2, onStock.getStore_email());
             stmt.setInt(3, onStock.getQuantity());
 
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)
@@ -483,12 +536,17 @@ public class DAOImpl {
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Mufaja(id, almufaj) VALUES(?,?);";
+            String INSERT_CONTACT = "INSERT INTO Mufaja(id, almufaj) VALUES(?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, progenre.getId());
             stmt.setString(2, progenre.getSubgenre());
 
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
         }
 
         catch (Exception ex)

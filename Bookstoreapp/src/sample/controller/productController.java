@@ -47,7 +47,7 @@ public class productController implements Initializable {
         );
         dao.addProduct(product);
         int id = dao.getLastProductId();
-        switch (((RadioButton) electronicToggleGroup.getSelectedToggle()).getText()){
+        switch (((RadioButton) productTypeToggleGroup.getSelectedToggle()).getText()){
             case "Könyv":
                 dao.addBook(new Book(
                         id,
@@ -69,6 +69,19 @@ public class productController implements Initializable {
             default:
                 System.err.println("Hiba történt az item insertelésénél!");
         }
+
+        dao.addProductGenre(new ProductGenre(
+                id,
+                genreComboBox.getValue()
+        ));
+
+        String[] authorData = authorComboBox.getValue().split(":");
+        dao.addProductAuth(new ProductAuthor(
+                id,
+                authorData[0],
+                Date.valueOf(authorData[1])
+        ));
+
         Main.loadFXML("sample.fxml");
     }
 
