@@ -9,7 +9,7 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sample.controller.onstockController">
+            fx:controller="sample.controller.addOnStockController">
    <Label layoutX="207.0" layoutY="23.0" text="KÉSZLET HOZZÁADÁSA">
       <font>
          <Font size="18.0"/>

@@ -4,27 +4,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.orderController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.addOrderController">
    <Label layoutX="199.0" layoutY="25.0" text="RENDELÉS HOZZÁADÁSA">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Label>
-   <Label layoutX="133.0" layoutY="139.0" text="Felhasználó:"/>
-   <Label layoutX="132.0" layoutY="190.0" text="Áruház:"/>
-   <Label layoutX="134.0" layoutY="234.0" text="Mennyiség:"/>
-   <Label layoutX="131.0" layoutY="283.0" text="Házhozszállítás:"/>
-   <ComboBox fx:id="userComboBox" layoutX="268.0" layoutY="135.0" prefHeight="25.0" prefWidth="203.0"/>
-   <ComboBox fx:id="storeComboBox" layoutX="268.0" layoutY="186.0" prefHeight="25.0" prefWidth="203.0"/>
-   <Spinner fx:id="amountSpinner" layoutX="268.0" layoutY="230.0"/>
-   <RadioButton layoutX="268.0" layoutY="283.0" mnemonicParsing="false" selected="true" text="Igen">
+   <Label layoutX="133.0" layoutY="139.0" text="Felhasználó:" />
+   <Label layoutX="132.0" layoutY="190.0" text="Áruház:" />
+   <Label layoutX="134.0" layoutY="234.0" text="Mennyiség:" />
+   <Label layoutX="132.0" layoutY="329.0" text="Házhozszállítás:" />
+   <ComboBox fx:id="userComboBox" layoutX="268.0" layoutY="135.0" prefHeight="25.0" prefWidth="203.0" />
+   <ComboBox fx:id="storeComboBox" layoutX="268.0" layoutY="186.0" prefHeight="25.0" prefWidth="203.0" />
+   <Spinner fx:id="amountSpinner" layoutX="268.0" layoutY="230.0" />
+   <RadioButton layoutX="269.0" layoutY="329.0" mnemonicParsing="false" selected="true" text="Igen">
       <toggleGroup>
-         <ToggleGroup fx:id="deliveryToggleGroup"/>
+         <ToggleGroup fx:id="deliveryToggleGroup" />
       </toggleGroup>
    </RadioButton>
-   <RadioButton layoutX="370.0" layoutY="283.0" mnemonicParsing="false" text="Nem" toggleGroup="$deliveryToggleGroup"/>
-   <Button layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#submitOrder" text="Mentés"/>
-   <Label layoutX="131.0" layoutY="90.0" text="Termék:"/>
-   <ComboBox fx:id="productComboBox" layoutX="268.0" layoutY="86.0" prefHeight="25.0" prefWidth="203.0"/>
+   <RadioButton layoutX="370.0" layoutY="329.0" mnemonicParsing="false" text="Nem" toggleGroup="$deliveryToggleGroup" />
+   <Button layoutX="263.0" layoutY="361.0" mnemonicParsing="false" onAction="#submitOrder" text="Mentés" />
+   <Label layoutX="131.0" layoutY="90.0" text="Termék:" />
+   <ComboBox fx:id="productComboBox" layoutX="268.0" layoutY="86.0" prefHeight="25.0" prefWidth="203.0" />
+   <DatePicker fx:id="datepicker" layoutX="268.0" layoutY="275.0" />
+   <Label layoutX="119.0" layoutY="279.0" text="Rendelés dátuma" />
 </AnchorPane>

@@ -10,6 +10,7 @@
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onMenuTermek" text="TERMEK"/>
             <MenuItem mnemonicParsing="false" onAction="#onMenuUser" text="FELHASZNALO"/>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuStore" text="ARUHAZ"/>
             <MenuItem mnemonicParsing="false" onAction="#onMenuFilm" text="FILM"/>
             <MenuItem mnemonicParsing="false" onAction="#onMenuKeszlet" text="KESZLETEN"/>
             <MenuItem mnemonicParsing="false" onAction="#onMenuKonyv" text="KONYV"/>

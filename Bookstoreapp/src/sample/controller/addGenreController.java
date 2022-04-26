@@ -16,6 +16,6 @@ public class addGenreController {
                 subGenreTextField.getText(),
                 mainGenreTextField.getText()
         );
-        new DAOImpl().AddGenre(genre);
+        new DAOImpl().addGenre(genre);
     }
 }

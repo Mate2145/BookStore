@@ -8,7 +8,7 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sample.controller.genreController">
+            fx:controller="sample.controller.addGenreController">
    <Label layoutX="212.0" layoutY="14.0" text="MŰFAJ HOZZÁADÁSA">
       <font>
          <Font size="18.0"/>

@@ -255,6 +255,24 @@ public class DAOImpl {
         return orderList;
     }
 
+    public List<Store> getStore() {
+        List<Store> storeList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Aruhaz";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Store store = new Store(rs.getString(1), rs.getString(2),rs.getString(3));
+                storeList.add(store);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return storeList;
+    }
+
     public User addUser(User adduser)
     {
         try

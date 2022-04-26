@@ -112,6 +112,12 @@ public class Main extends Application implements Initializable
         Main.loadFXML("music.fxml");
     }
 
+    public void onMenuStore(ActionEvent actionEvent) {
+        Main.loadFXML("store.fxml");
+    }
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -130,4 +136,6 @@ public class Main extends Application implements Initializable
     public void newProduct(ActionEvent event) {
         Main.loadFXML("add_product.fxml");
     }
+
+
 }
