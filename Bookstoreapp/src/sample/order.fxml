@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.orderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.orderController">
     <MenuBar layoutY="2.0">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza" />
         </Menu>
     </MenuBar>
-    <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="807.0">
+    <TableView fx:id="tableView" layoutY="27.0" prefHeight="382.0" prefWidth="807.0">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="62.99999922513962" text="id" />
             <TableColumn fx:id="u_emailCol" minWidth="0.0" prefWidth="181.20000076293945" text="felhasznalo email" />
@@ -19,4 +19,5 @@
             <TableColumn fx:id="typeCol" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="tipus" />
         </columns>
     </TableView>
+   <Button layoutX="359.0" layoutY="424.0" mnemonicParsing="false" onAction="#newOrder" text="Új hozzáadása" />
 </AnchorPane>

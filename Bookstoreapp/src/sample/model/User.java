@@ -111,5 +111,8 @@ public class User {
         this.loggedin = loggedin;
     }
 
-
+    @Override
+    public String toString() {
+        return email;
+    }
 }

@@ -57,4 +57,8 @@ public class orderController implements Initializable {
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getOrder());
     }
+
+    public void newOrder(ActionEvent event) {
+        Main.loadFXML("add_order.fxml");
+    }
 }
