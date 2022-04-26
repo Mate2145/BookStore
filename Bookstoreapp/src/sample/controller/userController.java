@@ -67,5 +67,7 @@ public class userController implements Initializable {
     }
 
     public void userSubmit(ActionEvent event) {
+
+        Main.loadFXML("sample.fxml");
     }
 }
