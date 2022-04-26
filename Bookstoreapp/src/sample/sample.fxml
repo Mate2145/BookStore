@@ -22,26 +22,17 @@
                         <MenuItem mnemonicParsing="false" onAction="#onMenuZene" text="ZENE" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
             </menus>
         </MenuBar>
-        <TableView fx:id="tableView" layoutY="29.0" prefHeight="372.0" prefWidth="814.0">
+        <TableView fx:id="tableView" layoutY="29.0" prefHeight="317.0" prefWidth="814.0">
             <columns>
                 <TableColumn fx:id="idCol" prefWidth="57.80001986026764" text="id" />
-                <TableColumn fx:id="nameCol" prefWidth="258.1999740600586" text="név" />
-                <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="151.0" text="ár" />
-                <TableColumn fx:id="electronicalCol" minWidth="0.0" prefWidth="111.80001831054688" text="elektronikus" />
-                <TableColumn fx:id="publisherCol" prefWidth="236.4000244140625" text="kiadó" />
+                <TableColumn fx:id="nameCol" prefWidth="279.0" text="név" />
+                <TableColumn fx:id="priceCol" minWidth="0.0" prefWidth="122.0" text="ár" />
+                <TableColumn fx:id="electronicalCol" minWidth="0.0" prefWidth="84.0" text="elektronikus" />
+                <TableColumn fx:id="publisherCol" prefWidth="270.0" text="kiadó" />
             </columns>
         </TableView>
+      <Button layoutX="361.0" layoutY="361.0" mnemonicParsing="false" onAction="#newProduct" text="Új hozzáadása" />
     </children>
 </AnchorPane>

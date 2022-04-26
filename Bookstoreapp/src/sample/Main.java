@@ -119,4 +119,8 @@ public class Main extends Application implements Initializable
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getProducts());
     }
+
+    public void newProduct(ActionEvent event) {
+        Main.loadFXML("add_product.fxml");
+    }
 }

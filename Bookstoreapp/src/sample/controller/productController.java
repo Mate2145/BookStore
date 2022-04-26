@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import sample.Main;
 
 public class productController {
 
@@ -22,5 +23,10 @@ public class productController {
     public ComboBox<String> genreComboBox;
 
     public void submitProduct(ActionEvent event) {
+    }
+
+    public void onBack(ActionEvent actionEvent)
+    {
+        Main.loadFXML("sample.fxml");
     }
 }
