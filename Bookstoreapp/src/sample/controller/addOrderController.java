@@ -1,21 +1,34 @@
 package sample.controller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.DAO.DAOImpl;
-import sample.model.Order;
+import sample.model.*;
 
+import java.net.URL;
 import java.sql.Date;
 import java.time.ZoneId;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class addOrderController
+public class addOrderController implements Initializable
 {
 
+    @FXML
     public ComboBox<String> userComboBox;
+    @FXML
     public ComboBox<String> storeComboBox;
+    @FXML
     public Spinner<Integer> amountSpinner;
+    @FXML
     public ToggleGroup deliveryToggleGroup;
-    public ComboBox<Integer> productComboBox;
+    @FXML
+    public ComboBox<String> productComboBox;
+    @FXML
     public DatePicker datepicker;
     ZoneId defaultZoneId = ZoneId.systemDefault();
 
@@ -24,7 +37,7 @@ public class addOrderController
     {
         Date date = (Date) Date.from(datepicker.getValue().atStartOfDay(defaultZoneId).toInstant());
         Order order = new Order(
-                productComboBox.getValue(),
+                Integer.parseInt(productComboBox.getValue().split(" - ")[0]),
                 userComboBox.getValue(),
                 storeComboBox.getValue(),
                 date,
@@ -33,5 +46,27 @@ public class addOrderController
         );
 
         new DAOImpl().addOrder(order);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DAOImpl dao = new DAOImpl();
+        List<Product> products = dao.getProducts();
+        List<String> productsSerialized = new LinkedList<>();
+        products.forEach(product -> productsSerialized.add(product.toString()));
+
+        List<User> users = dao.getUsers();
+        List<String> usersSerialized = new LinkedList<String>();
+        users.forEach(user -> usersSerialized.add(user.toString()));
+
+//        List<Store> store = dao.getStores();
+//        List<Store> storesSerialized = new LinkedList<String>();
+//        stores.forEach(store -> storesSerialized.add(store.toString()));
+
+        productComboBox.setItems(FXCollections.observableArrayList(productsSerialized));
+        productComboBox.getSelectionModel().select(0);
+
+        userComboBox.setItems(FXCollections.observableArrayList(usersSerialized));
+        userComboBox.getSelectionModel().select(0);
     }
 }

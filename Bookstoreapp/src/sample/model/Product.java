@@ -78,4 +78,9 @@ public class Product {
     public void setInput_time(Date input_time) {
         this.input_time = input_time;
     }
+
+    @Override
+    public String toString() {
+        return id + " - " + name;
+    }
 }
