@@ -194,6 +194,47 @@ public class DAOImpl {
         return productAuthorList;
     }
 
+    public List<OnStock> getOnStocks() {
+        List<OnStock> onStockList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Keszleten";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                OnStock onStock = new OnStock(rs.getInt(1), rs.getString(2),rs.getInt(3));
+                onStockList.add(onStock);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return onStockList;
+    }
+
+    public List<Order> getOrder() {
+        List<Order> orderList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Megrendel";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Order order = new Order(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getDate(4), rs.getInt(5), rs.getBoolean(6));
+                orderList.add(order);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return orderList;
+    }
+
     public User AddUser(User adduser)
     {
         try
