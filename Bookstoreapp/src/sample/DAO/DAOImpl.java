@@ -176,6 +176,24 @@ public class DAOImpl {
         return productGenreList;
     }
 
+    public List<ProductAuthor> getProductAuthors() {
+        List<ProductAuthor> productAuthorList = new ArrayList<>();
+        try {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT * FROM Szerzoje";
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                ProductAuthor productAuthor = new ProductAuthor(rs.getInt(1), rs.getString(2),rs.getDate(3));
+                productAuthorList.add(productAuthor);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return productAuthorList;
+    }
+
     public User AddUser(User adduser)
     {
         try

@@ -101,6 +101,7 @@ public class Main extends Application implements Initializable
     }
 
     public void onMenuSzerzoje(ActionEvent actionEvent) {
+        Main.loadFXML("product_author.fxml");
     }
 
     public void onMenuZene(ActionEvent actionEvent)
