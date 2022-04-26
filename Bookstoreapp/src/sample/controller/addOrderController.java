@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.DAO.DAOImpl;
+import sample.Main;
 import sample.model.*;
 
 import java.net.URL;
@@ -35,7 +36,7 @@ public class addOrderController implements Initializable
 
     public void submitOrder(ActionEvent actionEvent)
     {
-        Date date = (Date) Date.from(datepicker.getValue().atStartOfDay(defaultZoneId).toInstant());
+        Date date = Date.valueOf(datepicker.getValue());
         Order order = new Order(
                 Integer.parseInt(productComboBox.getValue().split(" - ")[0]),
                 userComboBox.getValue(),
@@ -46,6 +47,7 @@ public class addOrderController implements Initializable
         );
 
         new DAOImpl().addOrder(order);
+        Main.loadFXML("order.fxml");
     }
 
     @Override
@@ -56,17 +58,24 @@ public class addOrderController implements Initializable
         products.forEach(product -> productsSerialized.add(product.toString()));
 
         List<User> users = dao.getUsers();
-        List<String> usersSerialized = new LinkedList<String>();
+        List<String> usersSerialized = new LinkedList<>();
         users.forEach(user -> usersSerialized.add(user.toString()));
 
-//        List<Store> store = dao.getStores();
-//        List<Store> storesSerialized = new LinkedList<String>();
-//        stores.forEach(store -> storesSerialized.add(store.toString()));
+        List<Store> stores = dao.getStores();
+        List<String> storesSerialized = new LinkedList<>();
+        stores.forEach(store -> storesSerialized.add(store.toString()));
 
         productComboBox.setItems(FXCollections.observableArrayList(productsSerialized));
         productComboBox.getSelectionModel().select(0);
 
         userComboBox.setItems(FXCollections.observableArrayList(usersSerialized));
         userComboBox.getSelectionModel().select(0);
+
+        storeComboBox.setItems(FXCollections.observableArrayList(storesSerialized));
+        storeComboBox.getSelectionModel().select(0);
+    }
+
+    public void onBack(ActionEvent event) {
+        Main.loadFXML("order.fxml");
     }
 }

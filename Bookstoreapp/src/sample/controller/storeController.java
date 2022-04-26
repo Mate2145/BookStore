@@ -47,6 +47,10 @@ public class storeController implements Initializable {
         refreshTable();
     }
     private void refreshTable() {
-        tableView.getItems().setAll(new DAOImpl().getStore());
+        tableView.getItems().setAll(new DAOImpl().getStores());
+    }
+
+    public void newStore(ActionEvent event) {
+        Main.loadFXML("add_store.fxml");
     }
 }

@@ -255,7 +255,7 @@ public class DAOImpl {
         return orderList;
     }
 
-    public List<Store> getStore() {
+    public List<Store> getStores() {
         List<Store> storeList = new ArrayList<>();
         try {
             Connection conn = ods.getConnection(user, pass);

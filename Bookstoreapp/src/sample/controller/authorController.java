@@ -47,4 +47,8 @@ public class authorController implements Initializable {
 
     public void submitAuthor(ActionEvent event) {
     }
+
+    public void newAuthor(ActionEvent event) {
+        Main.loadFXML("add_author.fxml");
+    }
 }

@@ -3,6 +3,7 @@ package sample.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import sample.DAO.DAOImpl;
+import sample.Main;
 import sample.model.Store;
 
 public class addStoreController
@@ -20,5 +21,10 @@ public class addStoreController
                 addressTextField.getText()
         );
         new DAOImpl().addStore(store);
+        Main.loadFXML("store.fxml");
+    }
+
+    public void onBack(ActionEvent event) {
+        Main.loadFXML("store.fxml");
     }
 }

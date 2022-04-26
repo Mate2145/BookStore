@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import sample.DAO.DAOImpl;
+import sample.Main;
 import sample.model.Author;
 
 import java.sql.Date;
@@ -14,16 +15,15 @@ public class addAuthorController
 
     public TextField nameTextField;
     public DatePicker dateOfBirthPicker;
-    ZoneId defaultZoneId = ZoneId.systemDefault();
 
     public void submitAuthor(ActionEvent actionEvent)
     {
-        Date date = (Date) Date.from(dateOfBirthPicker.getValue().atStartOfDay(defaultZoneId).toInstant());
         Author author = new Author(
-                date,
+                Date.valueOf(dateOfBirthPicker.getValue()),
                 nameTextField.getText()
         );
 
         new DAOImpl().addAuthor(author);
+        Main.loadFXML("author.fxml");
     }
 }

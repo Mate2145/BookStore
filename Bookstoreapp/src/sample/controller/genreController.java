@@ -27,14 +27,6 @@ public class genreController implements Initializable {
         Main.loadFXML("sample.fxml");
     }
 
-    @FXML
-    public TextField subGenreTextField;
-    @FXML
-    public TextField mainGenreTextField;
-
-    public void submitGenre(ActionEvent event) {
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         subCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSubgenre()));
@@ -43,5 +35,9 @@ public class genreController implements Initializable {
     }
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getGenres());
+    }
+
+    public void newGenre(ActionEvent event) {
+        Main.loadFXML("add_genre.fxml");
     }
 }

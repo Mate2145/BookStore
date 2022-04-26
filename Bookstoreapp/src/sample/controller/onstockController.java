@@ -49,4 +49,8 @@ public class onstockController implements Initializable {
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getOnStocks());
     }
+
+    public void newStock(ActionEvent event) {
+        Main.loadFXML("add_stock.fxml");
+    }
 }
