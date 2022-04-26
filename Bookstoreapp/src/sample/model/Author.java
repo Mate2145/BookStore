@@ -2,6 +2,7 @@ package sample.model;
 import oracle.sql.DATE;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Author {
     private Date birth_date;

@@ -4,6 +4,8 @@ import sample.model.*;
 import oracle.jdbc.pool.OracleDataSource;
 
 import java.sql.*;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 public class DAOImpl {
@@ -320,7 +322,7 @@ public class DAOImpl {
             String INSERT_CONTACT = "INSERT INTO Szerzo(szul_datum, nev) VALUES(TO_DATE(?),?);";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
-            stmt.setDate(1, addauthor.getBirth_date());
+            stmt.setDate(1,addauthor.getBirth_date());
             stmt.setString(2, addauthor.getName());
         }
 
