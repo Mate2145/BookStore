@@ -38,5 +38,5 @@
    <ComboBox fx:id="genreComboBox" layoutX="225.0" layoutY="180.0" prefHeight="25.0" prefWidth="223.0" />
    <Button layoutX="333.0" layoutY="386.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
    <Label layoutX="112.0" layoutY="346.0" text="Hossz/Időtartam:" />
-   <Spinner fx:id="lengthSpinner" layoutX="231.0" layoutY="342.0" />
+   <Spinner fx:id="lengthSpinner" editable="true" layoutX="231.0" layoutY="342.0" min="0" max="99999"/>
 </AnchorPane>
