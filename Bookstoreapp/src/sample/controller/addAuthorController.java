@@ -24,6 +24,6 @@ public class addAuthorController
                 nameTextField.getText()
         );
 
-        new DAOImpl().AddAuthor(author);
+        new DAOImpl().addAuthor(author);
     }
 }
