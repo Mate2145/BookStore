@@ -47,7 +47,6 @@ public class DAOImpl {
             System.out.println("Bajom van");
             ex.printStackTrace();
         }
-        //getOnStorage(bookLists);
         return productList;
     }
 
@@ -130,14 +129,13 @@ public class DAOImpl {
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 User user1 = new User(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getBoolean("TORZSVASARLO"));
+                        rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getBoolean("TORZSVASARLO"), rs.getBoolean("ADMIN"));
                 productList.add(user1);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        //getOnStorage(bookLists);
         return productList;
     }
     public boolean AddUser(User adduser)

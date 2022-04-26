@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,14 +16,24 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class userController implements Initializable {
+    @FXML
     public TableView<User> tableView;
+    @FXML
     public TableColumn<User,String > emailCol;
+    @FXML
     public TableColumn<User,String > usernameCol;
+    @FXML
     public TableColumn<User,String > passCol;
+    @FXML
     public TableColumn<User,String > fullnameCol;
-    public TableColumn<User,String > adressCol;
+    @FXML
+    public TableColumn<User,String > addressCol;
+    @FXML
     public TableColumn<User,Number> balanceCol;
+    @FXML
     public TableColumn<User,Boolean > freqCol;
+    @FXML
+    public TableColumn<User,Boolean > adminCol;
 
     public void onBack(ActionEvent actionEvent)
     {
@@ -36,9 +47,10 @@ public class userController implements Initializable {
         usernameCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getUsername()));
         passCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPass()));
         fullnameCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullname()));
-        adressCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddress()));
+        addressCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddress()));
         balanceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getBalance()));
         freqCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isFreqbuyer()));
+        adminCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isAdmin()));
         refreshTable();
     }
 

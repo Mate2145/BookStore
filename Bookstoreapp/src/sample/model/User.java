@@ -28,14 +28,14 @@ public class User {
         this.loggedin = loggedin;
     }
 
-    public User(String email, String username, String pass, String fullname, String address, int balance,boolean freqbuyer) {
+    public User(String email, String username, String pass, String fullname, String address, int balance,boolean freqbuyer, boolean admin) {
         this.email = email;
         this.username = username;
         this.pass = pass;
         this.fullname = fullname;
         this.address = address;
         this.balance = balance;
-        this.admin = false;
+        this.admin = admin;
         this.freqbuyer = freqbuyer;
     }
 
