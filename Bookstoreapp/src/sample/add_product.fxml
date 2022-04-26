@@ -12,7 +12,7 @@
    </Label>
    <TextField fx:id="nameTextField" layoutX="226.0" layoutY="64.0" prefHeight="25.0" prefWidth="223.0" />
    <TextField fx:id="priceTextField" layoutX="226.0" layoutY="102.0" />
-   <TextField layoutX="228.0" layoutY="259.0" prefHeight="25.0" prefWidth="223.0" />
+   <TextField fx:id="publisherTextField" layoutX="228.0" layoutY="259.0" prefHeight="25.0" prefWidth="223.0" />
    <Label layoutX="117.0" layoutY="68.0" text="Név:" />
    <Label layoutX="120.0" layoutY="106.0" text="Ár:" />
    <Label layoutX="114.0" layoutY="225.0" text="Elektronikus-e?" />
@@ -38,5 +38,5 @@
    <ComboBox fx:id="genreComboBox" layoutX="225.0" layoutY="180.0" prefHeight="25.0" prefWidth="223.0" />
    <Button layoutX="333.0" layoutY="386.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
    <Label layoutX="112.0" layoutY="346.0" text="Hossz/Időtartam:" />
-   <Spinner fx:id="lengthSpinner" editable="true" layoutX="231.0" layoutY="342.0" min="0" max="99999"/>
+   <Spinner fx:id="lengthSpinner" editable="true" layoutX="231.0" layoutY="342.0" max="99999" min="0" />
 </AnchorPane>
