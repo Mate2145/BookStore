@@ -273,12 +273,12 @@ public class DAOImpl {
         return storeList;
     }
 
-    public User addUser(User adduser)
+    public void addUser(User adduser)
     {
         try
         {
-            String INSERT_CONTACT = "INSERT INTO Felhasznalo(email, felhasznalonev, jelszo, teljes_nev,lakcim,egyenleg,bejelentkezett) \n" +
-                    "VALUES(?,?,?,?,?,?,?,?)";
+            String INSERT_CONTACT = "INSERT INTO Felhasznalo(email, felhasznalonev, jelszo, teljes_nev, lakcim, egyenleg, admin) \n" +
+                    "VALUES(?,?,?,?,?,?,?)";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, adduser.getEmail());
@@ -286,22 +286,19 @@ public class DAOImpl {
             stmt.setString(3, adduser.getPass());
             stmt.setString(4, adduser.getFullname());
             stmt.setString(5, adduser.getAddress());
-            stmt.setTimestamp(6,new Timestamp(System.currentTimeMillis()));
+            stmt.setInt(6, adduser.getBalance());
+            stmt.setBoolean(7, adduser.isAdmin());
 
             int affectedRows = stmt.executeUpdate();
-            if(affectedRows == 0)
-            {
-                return null;
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
             }
-
-
         }
 
         catch (Exception ex)
         {
             ex.printStackTrace();
         }
-        return adduser;
     }
 
     public void addProduct(Product product)

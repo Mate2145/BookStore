@@ -16,7 +16,7 @@
    <Label layoutX="132.0" layoutY="329.0" text="Házhozszállítás:" />
    <ComboBox fx:id="userComboBox" layoutX="268.0" layoutY="135.0" prefHeight="25.0" prefWidth="203.0" />
    <ComboBox fx:id="storeComboBox" layoutX="268.0" layoutY="186.0" prefHeight="25.0" prefWidth="203.0" />
-   <Spinner fx:id="amountSpinner" layoutX="268.0" layoutY="230.0" max="99999" min="0" />
+   <Spinner fx:id="amountSpinner" layoutX="268.0" layoutY="230.0" editable="true" max="99999" min="0" />
    <RadioButton layoutX="269.0" layoutY="329.0" mnemonicParsing="false" selected="true" text="Igen">
       <toggleGroup>
          <ToggleGroup fx:id="deliveryToggleGroup" />

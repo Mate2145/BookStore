@@ -58,16 +58,7 @@ public class userController implements Initializable {
         tableView.getItems().setAll(new DAOImpl().getUsers());
     }
 
-    public void onUpdate(ActionEvent actionEvent)
-    {
+    public void newUser(ActionEvent event) {
         Main.loadFXML("add_user.fxml");
-    }
-
-    public void onDelete(ActionEvent actionEvent) {
-    }
-
-    public void userSubmit(ActionEvent event) {
-
-        Main.loadFXML("sample.fxml");
     }
 }

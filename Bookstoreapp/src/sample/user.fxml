@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
     <MenuBar layoutY="2.0">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza" />
@@ -21,4 +21,5 @@
             <TableColumn fx:id="adminCol" prefWidth="65.0" text="Admin" />
         </columns>
     </TableView>
+   <Button layoutX="359.0" layoutY="410.0" mnemonicParsing="false" onAction="#newUser" text="Új hozzáadása" />
 </AnchorPane>

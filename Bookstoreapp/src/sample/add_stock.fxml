@@ -15,7 +15,7 @@
    <Label layoutX="165.0" layoutY="216.0" text="Mennyiség:" />
    <ComboBox fx:id="productComboBox" layoutX="263.0" layoutY="100.0" prefHeight="25.0" prefWidth="187.0" />
    <ComboBox fx:id="storeComboBox" layoutX="263.0" layoutY="157.0" prefHeight="25.0" prefWidth="187.0" />
-   <Spinner fx:id="amountSpinner" layoutX="263.0" layoutY="212.0" max="99999" min="0" />
+   <Spinner fx:id="amountSpinner" layoutX="263.0" layoutY="212.0" editable="true" max="99999" min="0" />
    <Button layoutX="198.0" layoutY="295.0" mnemonicParsing="false" onAction="#submitStock" text="Mentés" />
    <Button layoutX="331.0" layoutY="295.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
 </AnchorPane>

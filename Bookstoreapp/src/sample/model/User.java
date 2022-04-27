@@ -39,6 +39,17 @@ public class User {
         this.freqbuyer = freqbuyer;
     }
 
+    public User(String email, String username, String pass, String fullname, String address, int balance, boolean admin) {
+        this.email = email;
+        this.username = username;
+        this.pass = pass;
+        this.fullname = fullname;
+        this.address = address;
+        this.balance = balance;
+        this.admin = admin;
+        this.freqbuyer = false;
+    }
+
     public String getEmail() {
         return email;
     }
