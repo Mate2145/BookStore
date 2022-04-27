@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
@@ -23,8 +24,6 @@ public class productAuthorController implements Initializable {
     public TableColumn<ProductAuthor,String> birthCol;
 
 
-
-
     public void onBack(ActionEvent actionEvent)
     {
         Main.loadFXML("sample.fxml");
@@ -40,5 +39,10 @@ public class productAuthorController implements Initializable {
 
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getProductAuthors());
+    }
+
+
+    public void newProductAuthor(ActionEvent event) {
+        Main.loadFXML("add_product_author.fxml");
     }
 }

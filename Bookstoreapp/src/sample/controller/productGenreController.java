@@ -33,4 +33,8 @@ public class productGenreController implements Initializable {
     private void refreshTable() {
         tableView.getItems().setAll(new DAOImpl().getProductGenres());
     }
+
+    public void newProductGenre(ActionEvent event) {
+        Main.loadFXML("add_product_genre.fxml");
+    }
 }
