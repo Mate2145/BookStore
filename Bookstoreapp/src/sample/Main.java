@@ -10,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -24,7 +27,6 @@ import java.util.ResourceBundle;
 public class Main extends Application implements Initializable
 {
     private static Stage stage;
-    public MenuItem storecountid;
     @FXML
     private TableView<Product> tableView;
     @FXML
@@ -195,8 +197,4 @@ public class Main extends Application implements Initializable
     }
 
 
-    public void onMenuCount(ActionEvent actionEvent)
-    {
-        Main.loadFXML("storecounter.fxml");
-    }
 }

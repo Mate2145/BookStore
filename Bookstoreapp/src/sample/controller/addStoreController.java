@@ -28,6 +28,7 @@ public class addStoreController implements Initializable {
         if (Main.editable != null){
             new DAOImpl().updateStore(store);
             Main.loadFXML("store.fxml");
+            toggleVisible(true);
         }else{
             toggleVisible(false);
         new DAOImpl().addStore(store);

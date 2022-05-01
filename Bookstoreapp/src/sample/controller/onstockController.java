@@ -58,9 +58,9 @@ public class onstockController implements Initializable {
 
                 editBtn.setOnAction(event -> {
                     //System.out.println(c.getId());
-                    //productedit = (Product) getTableRow().getItem();
+                    OnStock stock = (OnStock) getTableRow().getItem();
                     //System.out.println(productedit.getId());
-                    Main.loadFXML("add_product.fxml");
+                    Main.loadFXML("add_stock.fxml",stock);
                     //refreshTable();
                 });
             }

@@ -15,6 +15,7 @@ import sample.model.User;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class addOnStockController implements Initializable
@@ -31,12 +32,20 @@ public class addOnStockController implements Initializable
                 storeComboBox.getValue(),
                 amountSpinner.getValue()
         );
-        new DAOImpl().addOnStock(stock);
-        Main.loadFXML("onstock.fxml");
+        if (Main.editable != null){
+            new DAOImpl().updateStock(stock);
+            Main.loadFXML("onstock.fxml");
+            toggleVisible(true);
+        }else{
+            toggleVisible(false);
+            new DAOImpl().addOnStock(stock);
+            Main.loadFXML("onstock.fxml");
+        }
     }
 
     public void onBack(ActionEvent event) {
         Main.loadFXML("onstock.fxml");
+        toggleVisible(true);
     }
 
     @Override
@@ -55,5 +64,36 @@ public class addOnStockController implements Initializable
 
         storeComboBox.setItems(FXCollections.observableArrayList(storesSerialized));
         storeComboBox.getSelectionModel().select(0);
+
+        if (Main.editable !=null) {
+            OnStock edit = OnStock.class.cast(Main.editable);
+            for (int i = 0; i < storesSerialized.size(); i++) {
+                if (storesSerialized.get(i).contains(edit.getStore_email()))
+                {
+                    storeComboBox.getSelectionModel().select(i);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < productsSerialized.size(); i++) {
+                if (productsSerialized.get(i).contains(Integer.toString(edit.getId()))) {
+                    productComboBox.getSelectionModel().select(i);
+                    break;
+                }
+            }
+            amountSpinner.getValueFactory().setValue(edit.getQuantity());
+            toggleVisible(false);
+        }
+    }
+    void toggleVisible(boolean bool){
+
+        storeComboBox.setDisable(!bool);
+        productComboBox.setDisable(!bool);
+
+        if (bool && Main.editable !=null)
+        {
+            Main.editable = null;
+        }
+
     }
 }

@@ -35,55 +35,70 @@ public class productController implements Initializable {
     public Spinner<Integer> lengthSpinner;
     @FXML
     public TextField publisherTextField;
+    public Label idLabel;
 
     public void submitProduct(ActionEvent event) {
         DAOImpl dao = new DAOImpl();
         Product product = new Product(
+                Integer.parseInt(idLabel.getText()),
                 nameTextField.getText(),
                 Integer.parseInt(priceTextField.getText()),
                 ((RadioButton) electronicToggleGroup.getSelectedToggle()).getText().equals("Igen"),
                 publisherTextField.getText(),
                 Date.valueOf(LocalDate.now())
         );
-        dao.addProduct(product);
-        int id = dao.getLastProductId();
-        switch (((RadioButton) productTypeToggleGroup.getSelectedToggle()).getText()){
-            case "Könyv":
-                dao.addBook(new Book(
-                        id,
-                        lengthSpinner.getValue()
-                ));
-                break;
-            case "Zene":
-                dao.addMusic(new Music(
-                        id,
-                        lengthSpinner.getValue()
-                ));
-                break;
-            case "Film":
-                dao.addMovie(new Film(
-                        id,
-                        lengthSpinner.getValue()
-                ));
-                break;
-            default:
-                System.err.println("Hiba történt az item insertelésénél!");
+        if (Main.editable == null)
+        {
+            toggleVisible(false);
+            new DAOImpl().addProduct(product);
+            int id = dao.getLastProductId();
+            System.out.println(id);
+            System.out.println(((RadioButton) productTypeToggleGroup.getSelectedToggle()).getText());
+            switch (((RadioButton) productTypeToggleGroup.getSelectedToggle()).getText()){
+                case "Könyv":
+                    dao.addBook(new Book(
+                            id,
+                            lengthSpinner.getValue()
+                    ));
+                    break;
+                case "Zene":
+                    dao.addMusic(new Music(
+                            id,
+                            lengthSpinner.getValue()
+                    ));
+                    break;
+                case "Film":
+                    dao.addMovie(new Film(
+                            id,
+                            lengthSpinner.getValue()
+                    ));
+                    break;
+                default:
+                    System.err.println("Hiba történt az item insertelésénél!");
+            }
+
+            dao.addProductGenre(new ProductGenre(
+                    id,
+                    genreComboBox.getValue()
+            ));
+
+            String[] authorData = authorComboBox.getValue().split(":");
+            dao.addProductAuth(new ProductAuthor(
+                    id,
+                    authorData[0],
+                    Date.valueOf(authorData[1])
+            ));
+            Main.loadFXML("sample.fxml");
         }
 
-        dao.addProductGenre(new ProductGenre(
-                id,
-                genreComboBox.getValue()
-        ));
 
-        String[] authorData = authorComboBox.getValue().split(":");
-        dao.addProductAuth(new ProductAuthor(
-                id,
-                authorData[0],
-                Date.valueOf(authorData[1])
-        ));
+        if (Main.editable != null)
+        {
+            new DAOImpl().updateProduct(product);
+            Main.loadFXML("sample.fxml");
+            toggleVisible(true);
+        }
 
-        toggleVisible(true);
-        Main.loadFXML("sample.fxml");
     }
 
     public void onBack(ActionEvent actionEvent)
@@ -95,6 +110,8 @@ public class productController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        idLabel.setVisible(false);
+        idLabel.setText("0");
         List<Author> authors = new DAOImpl().getAuthors();
         List<String> authorsSerialized = new LinkedList<String>();
         authors.forEach(author -> authorsSerialized.add(author.toString()));
@@ -111,8 +128,10 @@ public class productController implements Initializable {
 
         if (Main.editable !=null)
         {
+
             Product edit = Product.class.cast(Main.editable);
 
+            idLabel.setText(Integer.toString(edit.getId()));
             nameTextField.setText(edit.getName());
             priceTextField.setText(Integer.toString(edit.getPrice()));
             publisherTextField.setText(edit.getPublisher());
@@ -122,7 +141,6 @@ public class productController implements Initializable {
     }
 
     void toggleVisible(boolean bool){
-
         electronicToggleGroup.getToggles().forEach(e -> {
             Node node = (Node) e;
             node.setDisable(!bool);
@@ -135,7 +153,7 @@ public class productController implements Initializable {
         genreComboBox.setDisable(!bool);
         lengthSpinner.setDisable(!bool);
 
-        if (Main.editable !=null)
+        if (bool && Main.editable !=null)
         {
             Main.editable = null;
         }
