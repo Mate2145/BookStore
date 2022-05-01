@@ -481,6 +481,29 @@ public class DAOImpl {
         }
         return false;
     }
+    public boolean updateStore(Store updateStore){
+        try
+        {
+            String UPDATE_CONTACT = "UPDATE Aruhaz SET nev = ? ,cim = ? WHERE email = ?";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(UPDATE_CONTACT);
+            stmt.setString(1, updateStore.getName());
+            stmt.setString(2, updateStore.getAddress());
+            stmt.setString(3,updateStore.getEmail());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 
     public boolean addProductAuth(ProductAuthor pauthor)
     {

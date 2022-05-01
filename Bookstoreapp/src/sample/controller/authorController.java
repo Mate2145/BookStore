@@ -51,13 +51,6 @@ public class authorController implements Initializable {
                     refreshTable();
                 });
 
-                editBtn.setOnAction(event -> {
-                    //System.out.println(c.getId());
-                    //authoredit = (Product) getTableRow().getItem();
-                    //System.out.println(authoredit.getId());
-                    Main.loadFXML("add_product.fxml");
-                    //refreshTable();
-                });
             }
 
             @Override
@@ -68,7 +61,7 @@ public class authorController implements Initializable {
                 }
                 else{
                     HBox container = new HBox();
-                    container.getChildren().addAll(editBtn, deleteBtn);
+                    container.getChildren().addAll(deleteBtn);
                     container.setSpacing(10.0);
                     setGraphic(container);
                 }
