@@ -10,8 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import sample.DAO.DAOImpl;
 import sample.model.Product;
@@ -37,6 +41,10 @@ public class Main extends Application implements Initializable
     private TableColumn<Product, String> publisherCol;
     @FXML
     private TableColumn<Product, String> imageCol;
+    @FXML
+    private TableColumn<Product,Void>actionColumn;
+
+    public static Product productedit;
 
     @Override
     public void start(Stage primaryStage) throws IOException{
@@ -121,12 +129,48 @@ public class Main extends Application implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        refreshTable();
         idCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getId()));
         nameCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getName()));
         priceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getPrice()));
         electronicalCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isElectronical()));
         publisherCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPublisher()));
-        refreshTable();
+        actionColumn.setCellFactory(param -> new TableCell(){
+            private final Button deleteBtn = new Button("Delete");
+            private final Button editBtn = new Button("Edit");
+
+            {
+                deleteBtn.setOnAction(event -> {
+                    Product c = (Product) getTableRow().getItem();
+                    System.out.println(c.getId());
+                    new DAOImpl().deleteProduct(c);
+                    refreshTable();
+                });
+
+                editBtn.setOnAction(event -> {
+                    //System.out.println(c.getId());
+                    productedit = (Product) getTableRow().getItem();
+                    System.out.println(productedit.getId());
+                    Main.loadFXML("add_product.fxml");
+                    //refreshTable();
+                });
+            }
+
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item, empty);
+                if(empty){
+                    setGraphic(null);
+                }
+                else{
+                    HBox container = new HBox();
+                    container.getChildren().addAll(editBtn, deleteBtn);
+                    container.setSpacing(10.0);
+                    setGraphic(container);
+                }
+            }
+        });
+
     }
 
     private void refreshTable() {

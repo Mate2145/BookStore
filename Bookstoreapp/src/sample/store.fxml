@@ -3,18 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.storeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.storeController">
     <MenuBar layoutY="2.0">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza" />
         </Menu>
     </MenuBar>
-    <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="716.0">
+    <TableView fx:id="tableView" layoutX="17.0" layoutY="44.0" prefHeight="383.0" prefWidth="943.0">
         <columns>
             <TableColumn fx:id="emailCol" prefWidth="220.59998780488968" text="email" />
-            <TableColumn fx:id="nameCol" prefWidth="189.6000213623047" text="nev" />
-            <TableColumn fx:id="addrCol" prefWidth="304.0" text="cim" />
+            <TableColumn fx:id="nameCol" prefWidth="227.0" text="nev" />
+            <TableColumn fx:id="addrCol" prefWidth="290.0" text="cim" />
+            <TableColumn fx:id="actionColumn" prefWidth="281.0" text="Action" />
         </columns>
     </TableView>
-   <Button layoutX="312.0" layoutY="409.0" mnemonicParsing="false" onAction="#newStore" text="Új hozzáadása" />
+   <Button layoutX="441.0" layoutY="453.0" mnemonicParsing="false" onAction="#newStore" text="Új hozzáadása" />
 </AnchorPane>

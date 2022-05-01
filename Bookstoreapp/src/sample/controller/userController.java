@@ -6,10 +6,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
 import sample.DAO.DAOImpl;
 import sample.Main;
+import sample.model.Author;
 import sample.model.User;
 
 import java.net.URL;
@@ -34,6 +38,7 @@ public class userController implements Initializable {
     public TableColumn<User,Boolean > freqCol;
     @FXML
     public TableColumn<User,Boolean > adminCol;
+    public TableColumn<User,Void> actionColumn;
 
     public void onBack(ActionEvent actionEvent)
     {
@@ -50,7 +55,41 @@ public class userController implements Initializable {
         addressCol.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddress()));
         balanceCol.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getBalance()));
         freqCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isFreqbuyer()));
-        adminCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isAdmin()));
+        actionColumn.setCellFactory(param -> new TableCell(){
+            private final Button deleteBtn = new Button("Delete");
+            private final Button editBtn = new Button("Edit");
+
+            {
+                deleteBtn.setOnAction(event -> {
+                    User c = (User) getTableRow().getItem();
+                    System.out.println(c.getEmail());
+                    new DAOImpl().deleteUser(c);
+                    refreshTable();
+                });
+
+                editBtn.setOnAction(event -> {
+                    //System.out.println(c.getId());
+                    //authoredit = (Product) getTableRow().getItem();
+                    //System.out.println(authoredit.getId());
+                    Main.loadFXML("add_product.fxml");
+                    //refreshTable();
+                });
+            }
+
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item, empty);
+                if(empty){
+                    setGraphic(null);
+                }
+                else{
+                    HBox container = new HBox();
+                    container.getChildren().addAll(editBtn, deleteBtn);
+                    container.setSpacing(10.0);
+                    setGraphic(container);
+                }
+            }
+        });
         refreshTable();
     }
 

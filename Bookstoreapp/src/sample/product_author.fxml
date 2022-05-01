@@ -14,6 +14,7 @@
             <TableColumn fx:id="idCol" prefWidth="41.0" text="id" />
             <TableColumn fx:id="nameCol" prefWidth="212.0" text="nev" />
             <TableColumn fx:id="birthCol" prefWidth="212.0" text="szuletesi datum" />
+            <TableColumn fx:id="actionColumn" prefWidth="212.0" text="Action" />
         </columns>
     </TableView>
    <Button layoutX="312.0" layoutY="411.0" mnemonicParsing="false" onAction="#newProductAuthor" text="Új hozzáadása" />
