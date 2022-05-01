@@ -19,6 +19,11 @@
             <MenuItem mnemonicParsing="false" onAction="#onMenuSzerzoje" text="SZERZOJE" />
             <MenuItem mnemonicParsing="false" onAction="#onMenuZene" text="ZENE" />
         </Menu>
+      <Menu mnemonicParsing="false" text="Lekerdezesek">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuCount" text="StoreCount" />
+         </items>
+      </Menu>
     </MenuBar>
     <TableView fx:id="tableView" layoutX="13.0" layoutY="39.0" prefHeight="467.0" prefWidth="939.0">
         <columns>

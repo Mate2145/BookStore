@@ -20,6 +20,7 @@ public class storeCounterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         storeColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStorename()));
         quantityColumn.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getCounter()));
+        refreshTable();
     }
 
     private void refreshTable() {
