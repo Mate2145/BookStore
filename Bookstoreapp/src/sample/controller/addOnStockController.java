@@ -32,12 +32,20 @@ public class addOnStockController implements Initializable
                 storeComboBox.getValue(),
                 amountSpinner.getValue()
         );
-        new DAOImpl().addOnStock(stock);
-        Main.loadFXML("onstock.fxml");
+        if (Main.editable != null){
+            new DAOImpl().updateStock(stock);
+            Main.loadFXML("onstock.fxml");
+            toggleVisible(true);
+        }else{
+            toggleVisible(false);
+            new DAOImpl().addOnStock(stock);
+            Main.loadFXML("onstock.fxml");
+        }
     }
 
     public void onBack(ActionEvent event) {
         Main.loadFXML("onstock.fxml");
+        toggleVisible(true);
     }
 
     @Override
@@ -74,13 +82,13 @@ public class addOnStockController implements Initializable
                 }
             }
             amountSpinner.getValueFactory().setValue(edit.getQuantity());
-            toggleVisible(true);
+            toggleVisible(false);
         }
     }
     void toggleVisible(boolean bool){
 
-        storeComboBox.setDisable(bool);
-        productComboBox.setDisable(bool);
+        storeComboBox.setDisable(!bool);
+        productComboBox.setDisable(!bool);
 
         if (bool && Main.editable !=null)
         {
