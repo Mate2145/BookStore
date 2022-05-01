@@ -781,5 +781,77 @@ public class DAOImpl {
 
     }
 
+    public void updateStock(OnStock onStock)
+    {
+        String UPDATE = "UPDATE Keszleten SET mennyi=? WHERE id=? and a_email=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(UPDATE);
+        ) {
+            stmt.setInt(1, onStock.getQuantity());
+            stmt.setInt(2, onStock.getId());
+            stmt.setString(3, onStock.getStore_email());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void updateProduct(Product product)
+    {
+        try
+        {
+            String UPDATE_CONTACT = "UPDATE Termek SET nev=?, ar = ?, elektronikus = ?, kiado=? WHERE id=?";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt =  conn.prepareStatement(UPDATE_CONTACT);
+            stmt.setString(1, product.getName());
+            stmt.setInt(2, product.getPrice());
+            stmt.setInt(3, product.isElectronical() ? 1 : 0);
+            stmt.setString(4, product.getPublisher());
+            stmt.setInt(5,product.getId());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
+
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    public boolean updateGenre(Genre addgenre)
+    {
+        try
+        {
+            String INSERT_CONTACT = "UPDATE Mufaj SET mufaj=? WHERE almufaj=?";
+            Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(2, addgenre.getSubgenre());
+            stmt.setString(1, addgenre.getGenrename());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating product failed, no rows affected.");
+            }
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+
+
+
+
 
 }
