@@ -861,6 +861,29 @@ public class DAOImpl {
         return productList;
     }
 
+    public List<Select9> getSelect9()
+    {
+        List<Select9> list = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Termek.nev FROM Termek INNER JOIN (SELECT id as s_id, COUNT(*) FROM Megrendel GROUP BY id HAVING COUNT(*) >= 2) ON Termek.id = s_id";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select9 product = new Select9(rs.getString(1));
+                list.add(product);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
     public List<Select4> getSelect4()
     {
         List<Select4> productList = new ArrayList<>();
