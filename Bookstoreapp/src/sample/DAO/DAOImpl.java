@@ -767,11 +767,11 @@ public class DAOImpl {
             PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
         ) {
             stmt.setString(1, adduser.getUsername());
-            stmt.setString(2, adduser.getUsername());
-            stmt.setString(3, adduser.getPass());
-            stmt.setString(4, adduser.getFullname());
-            stmt.setString(5, adduser.getAddress());
-            stmt.setInt(6, adduser.getBalance());
+            stmt.setString(2, adduser.getPass());
+            stmt.setString(3, adduser.getFullname());
+            stmt.setString(4, adduser.getAddress());
+            stmt.setInt(5, adduser.getBalance());
+            stmt.setString(6, adduser.getEmail());
             stmt.executeUpdate();
 
         } catch (SQLException throwables)

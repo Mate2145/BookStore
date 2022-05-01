@@ -48,10 +48,11 @@ public class addUserController implements Initializable
         if (Main.editable != null){
             new DAOImpl().updateUser(user);
             Main.loadFXML("user.fxml");
+            toggleVisible(true);
         }
         else {
+            toggleVisible(false);
             new DAOImpl().addUser(user);
-            toggleVisible(true);
             Main.loadFXML("user.fxml");
         }
 
