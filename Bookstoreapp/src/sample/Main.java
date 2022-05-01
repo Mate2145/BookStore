@@ -197,4 +197,8 @@ public class Main extends Application implements Initializable
     }
 
 
+    public void onMenuCount(ActionEvent actionEvent)
+    {
+        Main.loadFXML("storecounter.fxml");
+    }
 }
