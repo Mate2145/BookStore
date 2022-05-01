@@ -39,4 +39,5 @@
    <Button layoutX="333.0" layoutY="386.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
    <Label layoutX="112.0" layoutY="346.0" text="Hossz/Időtartam:" />
    <Spinner fx:id="lengthSpinner" editable="true" layoutX="231.0" layoutY="342.0" max="99999" min="0" />
+   <Label fx:id="idLabel" layoutX="50.0" layoutY="6.0" text="Label" />
 </AnchorPane>

@@ -306,13 +306,9 @@ public class DAOImpl {
         try
         {
             String INSERT_CONTACT = "INSERT INTO Termek(nev, ar, elektronikus, kiado) VALUES(?,?,?,?)";
-            String UPDATE_CONTACT = "UPDATE Termek SET nev=?, ar = ?, elektronikus = ?, kiado=? WHERE id=?";
             Connection conn = ods.getConnection(user, pass);
-            PreparedStatement stmt = product.getId() <=0 ? conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_CONTACT);
-            if (product.getId() > 0)
-            {
-                stmt.setInt(5,product.getId());
-            }
+            PreparedStatement stmt =  conn.prepareStatement(INSERT_CONTACT);
+
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getPrice());
             stmt.setInt(3, product.isElectronical() ? 1 : 0);
@@ -324,12 +320,6 @@ public class DAOImpl {
                 throw new SQLException("Creating product failed, no rows affected.");
             }
 
-            if(product.getId() <= 0){ // INSERT
-                ResultSet genKeys = stmt.getGeneratedKeys();
-                if(genKeys.next()){
-                    product.setId(genKeys.getInt(1));
-                }
-            }
         }
         catch (Exception ex)
         {
@@ -803,20 +793,15 @@ public class DAOImpl {
     {
         try
         {
-            String UPDATE_CONTACT = "UPDATE Termek SET nev=?, ar = ?, elektronikus = ?, kiado=? WHERE id=?";
+            String UPDATE_CONTACT = "UPDATE Termek SET nev=?, ar=?, kiado=? WHERE id=?";
             Connection conn = ods.getConnection(user, pass);
             PreparedStatement stmt =  conn.prepareStatement(UPDATE_CONTACT);
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getPrice());
-            stmt.setInt(3, product.isElectronical() ? 1 : 0);
-            stmt.setString(4, product.getPublisher());
-            stmt.setInt(5,product.getId());
+            stmt.setString(3, product.getPublisher());
+            stmt.setInt(4,product.getId());
 
-            int affectedRows = stmt.executeUpdate();
-
-            if (affectedRows == 0) {
-                throw new SQLException("Creating product failed, no rows affected.");
-            }
+            stmt.executeUpdate();
 
         }
         catch (Exception ex)
