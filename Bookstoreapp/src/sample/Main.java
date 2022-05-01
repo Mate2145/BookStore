@@ -44,7 +44,7 @@ public class Main extends Application implements Initializable
     @FXML
     private TableColumn<Product,Void>actionColumn;
 
-    public static Product productedit;
+    public static Object editable;
 
     @Override
     public void start(Stage primaryStage) throws IOException{
@@ -65,6 +65,23 @@ public class Main extends Application implements Initializable
         }
 
         stage.setScene(scene);
+        return loader;
+    }
+
+    public static FXMLLoader loadFXML(String fxml,Object object)
+    {
+
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
+        Scene scene = null;
+        try {
+            Parent root = loader.load();
+            scene = new Scene(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        editable = object;
+        stage.setScene(scene);
+
         return loader;
     }
 
@@ -149,9 +166,8 @@ public class Main extends Application implements Initializable
 
                 editBtn.setOnAction(event -> {
                     //System.out.println(c.getId());
-                    productedit = (Product) getTableRow().getItem();
-                    System.out.println(productedit.getId());
-                    Main.loadFXML("add_product.fxml");
+                    Product product = (Product) getTableRow().getItem();
+                    Main.loadFXML("add_product.fxml",product);
                     //refreshTable();
                 });
             }

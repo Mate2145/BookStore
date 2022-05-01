@@ -24,6 +24,7 @@ public class storeController implements Initializable {
     public TableColumn<Store,String> nameCol;
     public TableColumn<Store,String> addrCol;
     public TableColumn<Store,Void> actionColumn;
+    public static Store editstore;
 
     public void onBack(ActionEvent actionEvent)
     {
@@ -58,10 +59,8 @@ public class storeController implements Initializable {
                 });
 
                 editBtn.setOnAction(event -> {
-                    //System.out.println(c.getId());
-                    //productedit = (Product) getTableRow().getItem();
-                    //System.out.println(productedit.getId());
-                    Main.loadFXML("add_product.fxml");
+                    editstore = (Store) getTableRow().getItem();
+                    Main.loadFXML("add_store.fxml",editstore);
                     //refreshTable();
                 });
             }
