@@ -70,7 +70,7 @@ public class Main extends Application implements Initializable
 
     public static FXMLLoader loadFXML(String fxml,Object object)
     {
-
+        editable = object;
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
         Scene scene = null;
         try {
@@ -79,7 +79,6 @@ public class Main extends Application implements Initializable
         } catch (IOException e) {
             e.printStackTrace();
         }
-        editable = object;
         stage.setScene(scene);
 
         return loader;

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import sample.DAO.DAOImpl;
 import sample.Main;
@@ -81,11 +82,13 @@ public class productController implements Initializable {
                 Date.valueOf(authorData[1])
         ));
 
+        toggleVisible(true);
         Main.loadFXML("sample.fxml");
     }
 
     public void onBack(ActionEvent actionEvent)
     {
+        toggleVisible(true);
         Main.loadFXML("sample.fxml");
     }
 
@@ -106,11 +109,36 @@ public class productController implements Initializable {
         genreComboBox.setItems(FXCollections.observableArrayList(genresSerialized));
         genreComboBox.getSelectionModel().select(0);
 
-        if (Main.productedit !=null){
-            nameTextField.setText(Main.productedit.getName());
-            priceTextField.setText(Integer.toString(Main.productedit.getPrice()));
+        if (Main.editable !=null)
+        {
+            Product edit = Product.class.cast(Main.editable);
 
+            nameTextField.setText(edit.getName());
+            priceTextField.setText(Integer.toString(edit.getPrice()));
+            publisherTextField.setText(edit.getPublisher());
+            toggleVisible(false);
 
         }
+    }
+
+    void toggleVisible(boolean bool){
+
+        electronicToggleGroup.getToggles().forEach(e -> {
+            Node node = (Node) e;
+            node.setDisable(!bool);
+        });
+        productTypeToggleGroup.getToggles().forEach(e -> {
+            Node node = (Node) e;
+            node.setDisable(!bool);
+        });
+        authorComboBox.setDisable(!bool);
+        genreComboBox.setDisable(!bool);
+        lengthSpinner.setDisable(!bool);
+
+        if (Main.editable !=null)
+        {
+            Main.editable = null;
+        }
+
     }
 }
