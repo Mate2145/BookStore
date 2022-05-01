@@ -1,5 +1,7 @@
 package sample.model;
 
+import javafx.scene.control.SpinnerValueFactory;
+
 import java.util.Date;
 
 public class User {
@@ -109,6 +111,7 @@ public class User {
     public int getBalance() {
         return balance;
     }
+
 
     public void setBalance(int balance) {
         this.balance = balance;

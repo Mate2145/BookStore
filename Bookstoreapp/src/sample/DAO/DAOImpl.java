@@ -737,5 +737,26 @@ public class DAOImpl {
 
     }
 
+    public void updateUser(User adduser)
+    {
+        String DELETE_PRODUCT = "UPDATE Felhasznalo SET felhasznalonev=?,jelszo=?,teljes_nev=?,lakcim=?,egyenleg=? WHERE email=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, adduser.getUsername());
+            stmt.setString(2, adduser.getUsername());
+            stmt.setString(3, adduser.getPass());
+            stmt.setString(4, adduser.getFullname());
+            stmt.setString(5, adduser.getAddress());
+            stmt.setInt(6, adduser.getBalance());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
 
 }

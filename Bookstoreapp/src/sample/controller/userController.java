@@ -69,9 +69,9 @@ public class userController implements Initializable {
 
                 editBtn.setOnAction(event -> {
                     //System.out.println(c.getId());
-                    //authoredit = (Product) getTableRow().getItem();
+                   User user1 = (User) getTableRow().getItem();
                     //System.out.println(authoredit.getId());
-                    Main.loadFXML("add_product.fxml");
+                    Main.loadFXML("add_user.fxml",user1);
                     //refreshTable();
                 });
             }
