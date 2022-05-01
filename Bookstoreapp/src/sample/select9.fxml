@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.controller.select9Controller"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <TableView fx:id="tabled" layoutX="19.0" layoutY="34.0" prefHeight="317.0" prefWidth="563.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Store" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
