@@ -2,10 +2,12 @@ package sample.controller;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
+import sample.Main;
 import sample.model.Select1;
 
 import java.net.URL;
@@ -25,5 +27,10 @@ public class storeCounterController implements Initializable {
 
     private void refreshTable() {
         tabled.getItems().setAll(new DAOImpl().getStoreCount());
+    }
+
+    public void onBack(ActionEvent actionEvent)
+    {
+        Main.loadFXML("sample.fxml");
     }
 }
