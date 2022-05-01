@@ -1,0 +1,28 @@
+package sample.controller;
+
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import sample.DAO.DAOImpl;
+import sample.model.Select1;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class storeCounterController implements Initializable {
+    public TableColumn<Select1,String> storeColumn;
+    public TableColumn<Select1,Number> quantityColumn;
+    public TableView<Select1> tabled;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        storeColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStorename()));
+        quantityColumn.setCellValueFactory(c -> new SimpleIntegerProperty(c.getValue().getCounter()));
+    }
+
+    private void refreshTable() {
+        tabled.getItems().setAll(new DAOImpl().getStoreCount());
+    }
+}

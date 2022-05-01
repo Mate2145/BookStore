@@ -31,4 +31,23 @@
         </columns>
     </TableView>
     <Button layoutX="428.0" layoutY="509.0" mnemonicParsing="false" onAction="#newProduct" text="Új hozzáadása" />
+   <MenuBar layoutX="50.0" layoutY="2.0">
+     <menus>
+       <Menu mnemonicParsing="false" text="Lekerdezesek">
+         <items>
+           <MenuItem mnemonicParsing="false" text="Vissza" />
+               <MenuItem mnemonicParsing="false" text="Konyvek mufajok alapjan" />
+               <MenuItem mnemonicParsing="false" text="Legnepszerubb termek" />
+               <MenuItem mnemonicParsing="false" text="Havi toplista" />
+               <MenuItem fx:id="storecountid" mnemonicParsing="false" onAction="#onMenuCount" text="Megrendelesek boltonkent" />
+               <MenuItem mnemonicParsing="false" text="Almufajban gazdag" />
+               <MenuItem mnemonicParsing="false" text="Tobb szerzo" />
+               <MenuItem mnemonicParsing="false" text="Tobb helyen keszleten" />
+               <MenuItem mnemonicParsing="false" text="Ketszer megrendelt" />
+               <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+               <MenuItem mnemonicParsing="false" text="Legujabb konyvek" />
+         </items>
+       </Menu>
+     </menus>
+   </MenuBar>
 </AnchorPane>

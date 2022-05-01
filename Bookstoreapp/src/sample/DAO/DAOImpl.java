@@ -849,6 +849,33 @@ public class DAOImpl {
         return false;
     }
 
+    public List<Select1> getStoreCount()
+    {
+        List<Select1> productList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Aruhaz.nev, s_count as \"Megrendelések szama\" FROM Aruhaz\n" +
+                    "INNER JOIN \n" +
+                    "(SELECT Aruhaz.email as s_email,COUNT(*) as s_count FROM Aruhaz\n" +
+                    "INNER JOIN Megrendel ON Aruhaz.email = Megrendel.a_email\n" +
+                    "Group BY Aruhaz.email) ON Aruhaz.email = s_email";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select1 product = new Select1(rs.getString(1),rs.getInt(2));
+                productList.add(product);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return productList;
+    }
+
 
 
 
