@@ -36,6 +36,7 @@ public class addStoreController implements Initializable {
     }
 
     public void onBack(ActionEvent event) {
+        toggleVisible(true);
         Main.loadFXML("store.fxml");
     }
 
