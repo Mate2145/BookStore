@@ -13,7 +13,7 @@ public class DAOImpl {
     private ResultSet rs;
     private Statement stmt;
     private OracleDataSource ods;
-    final private String user = "TEST";
+    final private String user = "matee";
     final private String pass = "test";
 
     public DAOImpl() {
@@ -306,8 +306,13 @@ public class DAOImpl {
         try
         {
             String INSERT_CONTACT = "INSERT INTO Termek(nev, ar, elektronikus, kiado) VALUES(?,?,?,?)";
+            String UPDATE_CONTACT = "UPDATE Termek SET nev=?, ar = ?, elektronikus = ?, kiado=? WHERE id=?";
             Connection conn = ods.getConnection(user, pass);
-            PreparedStatement stmt = conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = product.getId() <=0 ? conn.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS) : conn.prepareStatement(UPDATE_CONTACT);
+            if (product.getId() > 0)
+            {
+                stmt.setInt(5,product.getId());
+            }
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getPrice());
             stmt.setInt(3, product.isElectronical() ? 1 : 0);
@@ -317,6 +322,13 @@ public class DAOImpl {
 
             if (affectedRows == 0) {
                 throw new SQLException("Creating product failed, no rows affected.");
+            }
+
+            if(product.getId() <= 0){ // INSERT
+                ResultSet genKeys = stmt.getGeneratedKeys();
+                if(genKeys.next()){
+                    product.setId(genKeys.getInt(1));
+                }
             }
         }
         catch (Exception ex)
@@ -571,6 +583,158 @@ public class DAOImpl {
             ex.printStackTrace();
         }
         return false;
+    }
+
+    public void deleteProduct(Product product)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Termek WHERE id=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setInt(1, product.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteAuthor(Author author)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Szerzo WHERE nev=? and szul_datum=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, author.getName());
+            stmt.setDate(2, author.getBirth_date());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteUser(User user1)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Felhasznalo WHERE email=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, user1.getEmail());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteGenre(Genre genre)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Mufaj WHERE almufaj=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, genre.getSubgenre());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteStore(Store store)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Aruhaz WHERE email=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setString(1, store.getEmail());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteProductAuthor(ProductAuthor productAuthor)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Szerzoje WHERE id=? and nev=? and szul_datum=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setInt(1, productAuthor.getId());
+            stmt.setString(2,productAuthor.getName());
+            stmt.setDate(3,productAuthor.getBirth_date());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteProductGenre(ProductGenre productGenre)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Mufaja WHERE id=? and almufaj=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setInt(1,productGenre.getId());
+            stmt.setString(2,productGenre.getSubgenre());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteOrder(Order order)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Megrendel WHERE id=? and f_email=? and a_email=? and mikor=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setInt(1,order.getId());
+            stmt.setString(2,order.getUser_email());
+            stmt.setString(3,order.getStore_email());
+            stmt.setDate(4,order.getWhen());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void deleteStock(OnStock onStock)
+    {
+        String DELETE_PRODUCT = "DELETE FROM Keszleten WHERE id=? and a_email=?";
+        try(Connection conn = ods.getConnection(user, pass);
+            PreparedStatement stmt = conn.prepareStatement(DELETE_PRODUCT, Statement.RETURN_GENERATED_KEYS);
+        ) {
+            stmt.setInt(1,onStock.getId());
+            stmt.setString(2,onStock.getStore_email());
+            stmt.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+
     }
 
 

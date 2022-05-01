@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.userController">
     <MenuBar layoutY="2.0">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza" />
         </Menu>
     </MenuBar>
-    <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="807.0">
+    <TableView fx:id="tableView" layoutX="18.0" layoutY="42.0" prefHeight="450.0" prefWidth="969.0">
         <columns>
             <TableColumn fx:id="emailCol" prefWidth="155.60000306367874" text="email" />
             <TableColumn fx:id="usernameCol" minWidth="0.0" prefWidth="97.60000610351562" text="Username" />
@@ -17,9 +17,9 @@
             <TableColumn fx:id="fullnameCol" minWidth="0.0" prefWidth="102.39999389648438" text="Full name" />
             <TableColumn fx:id="addressCol" prefWidth="134.79998779296875" text="Address" />
             <TableColumn fx:id="balanceCol" maxWidth="154.5999755859375" minWidth="-1.0" prefWidth="106.0" text="Balance" />
-            <TableColumn fx:id="freqCol" prefWidth="74.79998779296875" text="Freq Buyer" />
-            <TableColumn fx:id="adminCol" prefWidth="65.0" text="Admin" />
+            <TableColumn fx:id="freqCol" prefWidth="112.0" text="Freq Buyer" />
+            <TableColumn fx:id="actionColumn" prefWidth="184.0" text="Actions" />
         </columns>
     </TableView>
-   <Button layoutX="359.0" layoutY="410.0" mnemonicParsing="false" onAction="#newUser" text="Új hozzáadása" />
+   <Button layoutX="452.0" layoutY="494.0" mnemonicParsing="false" onAction="#newUser" text="Új hozzáadása" />
 </AnchorPane>

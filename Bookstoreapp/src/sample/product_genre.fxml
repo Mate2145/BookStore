@@ -13,6 +13,7 @@
         <columns>
             <TableColumn fx:id="idCol" prefWidth="41.0" text="id" />
             <TableColumn fx:id="subCol" prefWidth="212.0" text="alműfaj" />
+            <TableColumn fx:id="actionColumn" prefWidth="212.0" text="alműfaj" />
 
         </columns>
     </TableView>

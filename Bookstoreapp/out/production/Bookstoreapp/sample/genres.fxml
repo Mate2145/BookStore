@@ -3,17 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.genreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.genreController">
     <MenuBar layoutY="2.0">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onBack" text="Vissza" />
         </Menu>
     </MenuBar>
-    <TableView fx:id="tableView" layoutY="27.0" prefHeight="374.0" prefWidth="716.0">
+    <TableView fx:id="tableView" layoutY="27.0" prefHeight="346.0" prefWidth="716.0">
         <columns>
             <TableColumn fx:id="subCol" prefWidth="89.59999084472656" text="Alműfaj" />
             <TableColumn fx:id="genreCol" prefWidth="164.0" text="Műfaj" />
+            <TableColumn fx:id="actionColumn" prefWidth="164.0" text="Műfaj" />
 
         </columns>
     </TableView>
+   <Button layoutX="312.0" layoutY="379.0" mnemonicParsing="false" onAction="#newGenre" text="Új hozzáadása" />
 </AnchorPane>

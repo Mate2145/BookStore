@@ -17,6 +17,7 @@
             <TableColumn fx:id="whenCol" minWidth="0.0" prefWidth="105.80001831054688" text="idopont" />
             <TableColumn fx:id="quanCol" prefWidth="122.79998779296875" text="mennyiseg" />
             <TableColumn fx:id="typeCol" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="tipus" />
+            <TableColumn fx:id="actionColumn" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="tipus" />
         </columns>
     </TableView>
    <Button layoutX="359.0" layoutY="424.0" mnemonicParsing="false" onAction="#newOrder" text="Új hozzáadása" />

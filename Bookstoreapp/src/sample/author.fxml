@@ -13,6 +13,7 @@
         <columns>
             <TableColumn fx:id="birthdayCol" prefWidth="139.59999084472656" text="szuletesnap" />
             <TableColumn fx:id="nameCol" prefWidth="168.4000244140625" text="név" />
+            <TableColumn fx:id="actionColumn" prefWidth="168.4000244140625" text="név" />
         </columns>
     </TableView>
    <Button layoutX="312.0" layoutY="406.0" mnemonicParsing="false" onAction="#newAuthor" text="Új hozzáadása" />

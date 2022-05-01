@@ -90,7 +90,8 @@ public class productController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
         List<Author> authors = new DAOImpl().getAuthors();
         List<String> authorsSerialized = new LinkedList<String>();
         authors.forEach(author -> authorsSerialized.add(author.toString()));
@@ -104,5 +105,12 @@ public class productController implements Initializable {
 
         genreComboBox.setItems(FXCollections.observableArrayList(genresSerialized));
         genreComboBox.getSelectionModel().select(0);
+
+        if (Main.productedit !=null){
+            nameTextField.setText(Main.productedit.getName());
+            priceTextField.setText(Integer.toString(Main.productedit.getPrice()));
+
+
+        }
     }
 }
