@@ -861,6 +861,38 @@ public class DAOImpl {
         return productList;
     }
 
+    public List<Select4> getSelect4()
+    {
+        List<Select4> productList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "    SELECT Termek.nev, s_id, s_db FROM Termek\n" +
+                    "    INNER JOIN\n" +
+                    "    (SELECT * FROM (SELECT id AS s_id, SUM(mennyit) AS s_db FROM Megrendel \n" +
+                    "    WHERE SYSDATE - CAST(Megrendel.mikor AS DATE)< 31\n" +
+                    "    GROUP BY  id ORDER BY s_db DESC) WHERE ROWNUM <= 3) ON Termek.id = s_id\n" +
+                    "    ORDER BY s_db DESC";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select4 product = new Select4(rs.getString(1),rs.getInt(2),rs.getInt(3));
+                productList.add(product);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return productList;
+    }
+
+
+
+
+
 
 
 
