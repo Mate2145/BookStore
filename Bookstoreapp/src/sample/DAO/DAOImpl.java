@@ -896,15 +896,15 @@ public class DAOImpl {
         {
             Connection conn = ods.getConnection(user, pass);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT Termek.nev as x_nev, Mufaj.mufaj as x_muf, MAX(s_db) x_db FROM Termek\n"+
+            String sql = "SELECT Termek.nev, Mufaj.mufaj, y_db FROM Termek\n"+
             "INNER JOIN Mufaja ON Termek.id = Mufaja.id\n"+
             "INNER JOIN Mufaj ON Mufaja.almufaj = Mufaj.almufaj\n"+
-            "INNER JOIN\n"+
-            "(SELECT Megrendel.id AS s_id, SUM(Megrendel.mennyit) AS s_db FROM Termek\n"+
-            "INNER JOIN Megrendel ON Termek.id = Megrendel.id\n"+
-            "GROUP BY  Megrendel.id) ON Termek.id = s_id\n"+
-            "GROUP BY Mufaj.mufaj, Termek.nev\n"+
-            "ORDER BY MAX(s_db) DESC";
+            "INNER JOIN (SELECT id AS y_id, SUM(mennyit) AS y_db FROM Megrendel GROUP BY id) ON Termek.id = y_id\n"+
+            "WHERE (Mufaj.mufaj, y_db) IN\n"+
+                "(SELECT Mufaj.mufaj as x_muf, MAX(s_db) as x_db FROM Mufaj INNER JOIN Mufaja ON Mufaj.almufaj = Mufaja.almufaj\n"+
+                        "INNER JOIN (SELECT id AS s_id, SUM(mennyit) AS s_db FROM Megrendel GROUP BY id) ON Mufaja.id = s_id\n"+
+                        "GROUP BY Mufaj.mufaj) ORDER BY y_db DESC";
+
             rs = stmt.executeQuery(sql);
             while (rs.next())
             {
