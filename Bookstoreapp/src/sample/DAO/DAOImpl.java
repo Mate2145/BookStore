@@ -832,7 +832,123 @@ public class DAOImpl {
         return false;
     }
 
-    public List<Select5> getStoreCount()
+    public List<Select1> getSelect1()
+    {
+        List<Select1> genreList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Mufaj.mufaj, COUNT(Termek.id) AS mennyi FROM Termek\n" +
+            "INNER JOIN Mufaja ON Termek.id = Mufaja.id\n" +
+            "INNER JOIN Mufaj ON Mufaja.almufaj = Mufaj.almufaj\n" +
+            "GROUP BY Mufaj.mufaj";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select1 genre = new Select1(rs.getString(1),rs.getInt(2));
+                genreList.add(genre);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return genreList;
+    }
+
+    public List<Select2> getSelect2()
+    {
+        List<Select2> productList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Termek.nev, TO_CHAR(Termek.beviteli_ido, 'YYYY-MM-DD') AS mikor, Mufaj.mufaj FROM Termek\n"+
+            "INNER JOIN Mufaja ON Termek.id = Mufaja.id\n"+
+            "INNER JOIN Mufaj ON Mufaja.almufaj = Mufaj.almufaj\n"+
+            "WHERE(Termek.beviteli_ido, Mufaj.mufaj) IN\n"+
+                "(SELECT MAX(Termek.beviteli_ido), Mufaj.mufaj FROM Termek\n"+
+                        "INNER JOIN Mufaja ON Termek.id = Mufaja.id\n"+
+                        "INNER JOIN Mufaj ON Mufaja.almufaj = Mufaj.almufaj\n"+
+                        "GROUP BY Mufaj.mufaj)\n"+
+            "ORDER BY mikor DESC";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select2 genre = new Select2(rs.getString(1),rs.getString(2), rs.getString(3));
+                productList.add(genre);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return productList;
+    }
+
+    public List<Select3> getSelect3()
+    {
+        List<Select3> genreList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Termek.nev as x_nev, Mufaj.mufaj as x_muf, MAX(s_db) x_db FROM Termek\n"+
+            "INNER JOIN Mufaja ON Termek.id = Mufaja.id\n"+
+            "INNER JOIN Mufaj ON Mufaja.almufaj = Mufaj.almufaj\n"+
+            "INNER JOIN\n"+
+            "(SELECT Megrendel.id AS s_id, SUM(Megrendel.mennyit) AS s_db FROM Termek\n"+
+            "INNER JOIN Megrendel ON Termek.id = Megrendel.id\n"+
+            "GROUP BY  Megrendel.id) ON Termek.id = s_id\n"+
+            "GROUP BY Mufaj.mufaj, Termek.nev\n"+
+            "ORDER BY MAX(s_db) DESC";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select3 genre = new Select3(rs.getString(1),rs.getString(2), rs.getInt(3));
+                genreList.add(genre);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return genreList;
+    }
+
+    public List<Select4> getSelect4()
+    {
+        List<Select4> productList = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "    SELECT Termek.nev, s_id, s_db FROM Termek\n" +
+                    "    INNER JOIN\n" +
+                    "    (SELECT * FROM (SELECT id AS s_id, SUM(mennyit) AS s_db FROM Megrendel \n" +
+                    "    WHERE SYSDATE - CAST(Megrendel.mikor AS DATE)< 31\n" +
+                    "    GROUP BY  id ORDER BY s_db DESC) WHERE ROWNUM <= 3) ON Termek.id = s_id\n" +
+                    "    ORDER BY s_db DESC";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select4 product = new Select4(rs.getString(1),rs.getInt(2),rs.getInt(3));
+                productList.add(product);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return productList;
+    }
+
+    public List<Select5> getSelect5()
     {
         List<Select5> productList = new ArrayList<>();
         try
@@ -880,34 +996,6 @@ public class DAOImpl {
             ex.printStackTrace();
         }
         return list;
-    }
-
-    public List<Select4> getSelect4()
-    {
-        List<Select4> productList = new ArrayList<>();
-        try
-        {
-            Connection conn = ods.getConnection(user, pass);
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String sql = "    SELECT Termek.nev, s_id, s_db FROM Termek\n" +
-                    "    INNER JOIN\n" +
-                    "    (SELECT * FROM (SELECT id AS s_id, SUM(mennyit) AS s_db FROM Megrendel \n" +
-                    "    WHERE SYSDATE - CAST(Megrendel.mikor AS DATE)< 31\n" +
-                    "    GROUP BY  id ORDER BY s_db DESC) WHERE ROWNUM <= 3) ON Termek.id = s_id\n" +
-                    "    ORDER BY s_db DESC";
-            rs = stmt.executeQuery(sql);
-            while (rs.next())
-            {
-                Select4 product = new Select4(rs.getString(1),rs.getInt(2),rs.getInt(3));
-                productList.add(product);
-            }
-
-        } catch (Exception ex)
-        {
-            System.out.println("Bajom van");
-            ex.printStackTrace();
-        }
-        return productList;
     }
 
 

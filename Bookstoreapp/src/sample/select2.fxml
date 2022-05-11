@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.select2Controller">
+   <children>
+      <Button layoutX="277.0" layoutY="333.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
+      <Label layoutX="169.0" layoutY="24.0" text="A legújabb termékek főműfajonként">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tabled" layoutX="14.0" layoutY="57.0" prefHeight="248.0" prefWidth="574.0">
+        <columns>
+          <TableColumn fx:id="productNameColumn" prefWidth="105.0" text="Termék neve" />
+          <TableColumn fx:id="whenColumn" prefWidth="134.0" text="Beviteli idő" />
+            <TableColumn fx:id="genreColumn" prefWidth="134.0" text="Főműfaj neve" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
