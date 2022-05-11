@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
     <MenuBar layoutY="2.0">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onMenuTermek" text="TERMEK" />
@@ -21,7 +21,9 @@
         </Menu>
       <Menu mnemonicParsing="false" text="Lekerdezesek">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#onMenuCount" text="StoreCount" />
+            <MenuItem mnemonicParsing="false" onAction="#onMenuStoreCount" text="StoreCount" />
+            <MenuItem mnemonicParsing="false" onAction="#onMenuOrderedTwice" text="Kétszer megrendelt" />
+            <MenuItem mnemonicParsing="false" onAction="#onMenuTop3" text="Havi TOP 3-as" />
          </items>
       </Menu>
     </MenuBar>

@@ -8,15 +8,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
 import sample.Main;
-import sample.model.Select1;
+import sample.model.Select5;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class storeCounterController implements Initializable {
-    public TableColumn<Select1,String> storeColumn;
-    public TableColumn<Select1,Number> quantityColumn;
-    public TableView<Select1> tabled;
+    public TableColumn<Select5,String> storeColumn;
+    public TableColumn<Select5,Number> quantityColumn;
+    public TableView<Select5> tabled;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

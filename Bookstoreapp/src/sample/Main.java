@@ -197,8 +197,16 @@ public class Main extends Application implements Initializable
     }
 
 
-    public void onMenuCount(ActionEvent actionEvent)
+    public void onMenuStoreCount(ActionEvent actionEvent)
     {
-        Main.loadFXML("storecounter.fxml");
+        Main.loadFXML("select5.fxml");
+    }
+
+    public void onMenuOrderedTwice(ActionEvent actionEvent) {
+        Main.loadFXML("select9.fxml");
+    }
+
+    public void onMenuTop3(ActionEvent actionEvent) {
+        Main.loadFXML("select4.fxml");
     }
 }

@@ -4,8 +4,6 @@ import sample.model.*;
 import oracle.jdbc.pool.OracleDataSource;
 
 import java.sql.*;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 
 public class DAOImpl {
@@ -834,9 +832,9 @@ public class DAOImpl {
         return false;
     }
 
-    public List<Select1> getStoreCount()
+    public List<Select5> getStoreCount()
     {
-        List<Select1> productList = new ArrayList<>();
+        List<Select5> productList = new ArrayList<>();
         try
         {
             Connection conn = ods.getConnection(user, pass);
@@ -849,7 +847,7 @@ public class DAOImpl {
             rs = stmt.executeQuery(sql);
             while (rs.next())
             {
-                Select1 product = new Select1(rs.getString(1),rs.getInt(2));
+                Select5 product = new Select5(rs.getString(1),rs.getInt(2));
                 productList.add(product);
             }
 

@@ -1,12 +1,12 @@
 package sample.controller;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import sample.DAO.DAOImpl;
-import sample.model.Select1;
+import sample.Main;
 import sample.model.Select9;
 
 import java.net.URL;
@@ -24,5 +24,9 @@ public class select9Controller implements Initializable {
 
     private void refreshTable() {
         tabled.getItems().setAll(new DAOImpl().getSelect9());
+    }
+
+    public void onBack(ActionEvent event) {
+        Main.loadFXML("sample.fxml");
     }
 }

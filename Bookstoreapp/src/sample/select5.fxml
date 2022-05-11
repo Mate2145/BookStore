@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="457.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.storeCounterController">
+   <children>
+      <TableView fx:id="tabled" layoutX="19.0" layoutY="61.0" prefHeight="317.0" prefWidth="563.0">
+        <columns>
+          <TableColumn fx:id="storeColumn" prefWidth="190.0" text="Áruház neve" />
+          <TableColumn fx:id="quantityColumn" prefWidth="166.0" text="Megrendelések száma" />
+        </columns>
+      </TableView>
+      <Button layoutX="276.0" layoutY="390.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
+      <Label layoutX="165.0" layoutY="22.0" text="Hány megrendelése van egyes áruházaknak">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

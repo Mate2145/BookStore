@@ -1,10 +1,10 @@
 package sample.model;
 
-public class Select1 {
+public class Select5 {
     String Storename;
     int counter;
 
-    public Select1(String storename, int counter) {
+    public Select5(String storename, int counter) {
         Storename = storename;
         this.counter = counter;
     }
