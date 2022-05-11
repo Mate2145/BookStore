@@ -58,7 +58,6 @@ public class orderController implements Initializable {
         typeCol.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().isOrdertype()));
         actionColumn.setCellFactory(param -> new TableCell(){
             private final Button deleteBtn = new Button("Delete");
-            private final Button editBtn = new Button("Edit");
 
             {
                 deleteBtn.setOnAction(event -> {
@@ -68,13 +67,7 @@ public class orderController implements Initializable {
                     refreshTable();
                 });
 
-                editBtn.setOnAction(event -> {
-                    //System.out.println(c.getId());
-                    //productedit = (Product) getTableRow().getItem();
-                    //System.out.println(productedit.getId());
-                    Main.loadFXML("add_product.fxml");
-                    //refreshTable();
-                });
+
             }
 
             @Override
@@ -85,7 +78,7 @@ public class orderController implements Initializable {
                 }
                 else{
                     HBox container = new HBox();
-                    container.getChildren().addAll(editBtn, deleteBtn);
+                    container.getChildren().addAll(deleteBtn);
                     container.setSpacing(10.0);
                     setGraphic(container);
                 }

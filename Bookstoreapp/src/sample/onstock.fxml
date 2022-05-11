@@ -12,9 +12,9 @@
     <TableView fx:id="tableView" layoutY="27.0" prefHeight="369.0" prefWidth="716.0">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="41.0" text="id" />
-            <TableColumn fx:id="emailCol" prefWidth="212.0" text="Aruhaz email" />
-            <TableColumn fx:id="quanCol" prefWidth="212.0" text="mennyi" />
-            <TableColumn fx:id="actionColumn" prefWidth="212.0" text="Action" />
+            <TableColumn fx:id="emailCol" prefWidth="212.0" text="áruház email" />
+            <TableColumn fx:id="quanCol" prefWidth="212.0" text="mennyiség" />
+            <TableColumn fx:id="actionColumn" prefWidth="212.0" text="módosítások" />
         </columns>
     </TableView>
    <Button layoutX="312.0" layoutY="413.0" mnemonicParsing="false" onAction="#newStock" text="Új hozzáadása" />

@@ -9,8 +9,8 @@
     <children>
         <TableView fx:id="tabled" layoutX="36.0" layoutY="55.0" prefHeight="240.0" prefWidth="540.0">
             <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="118.0" text="Termék neve" />
-                <TableColumn fx:id="countColumn" prefWidth="164.0" text="Szerzők száma" />
+                <TableColumn fx:id="nameColumn" prefWidth="118.0" text="termék neve" />
+                <TableColumn fx:id="countColumn" prefWidth="164.0" text="szerzők száma" />
             </columns>
         </TableView>
         <Label layoutX="97.0" layoutY="21.0" text="A több szerzővel rendelkező termékek nevei, és szerzőinek száma.">

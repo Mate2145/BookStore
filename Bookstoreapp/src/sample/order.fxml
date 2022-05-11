@@ -12,12 +12,12 @@
     <TableView fx:id="tableView" layoutY="27.0" prefHeight="382.0" prefWidth="807.0">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="62.99999922513962" text="id" />
-            <TableColumn fx:id="u_emailCol" minWidth="0.0" prefWidth="181.20000076293945" text="felhasznalo email" />
-            <TableColumn fx:id="s_emailCol" prefWidth="146.00001525878906" text="aruhaz email" />
-            <TableColumn fx:id="whenCol" minWidth="0.0" prefWidth="105.80001831054688" text="idopont" />
-            <TableColumn fx:id="quanCol" prefWidth="122.79998779296875" text="mennyiseg" />
-            <TableColumn fx:id="typeCol" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="tipus" />
-            <TableColumn fx:id="actionColumn" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="tipus" />
+            <TableColumn fx:id="u_emailCol" minWidth="0.0" prefWidth="181.20000076293945" text="felhasználó email" />
+            <TableColumn fx:id="s_emailCol" prefWidth="146.00001525878906" text="áruhaz email" />
+            <TableColumn fx:id="whenCol" minWidth="0.0" prefWidth="105.80001831054688" text="időpont" />
+            <TableColumn fx:id="quanCol" prefWidth="122.79998779296875" text="mennyiség" />
+            <TableColumn fx:id="typeCol" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="típus" />
+            <TableColumn fx:id="actionColumn" maxWidth="234.39996337890625" minWidth="-1.0" prefWidth="181.39996337890625" text="módosítások" />
         </columns>
     </TableView>
    <Button layoutX="359.0" layoutY="424.0" mnemonicParsing="false" onAction="#newOrder" text="Új hozzáadása" />

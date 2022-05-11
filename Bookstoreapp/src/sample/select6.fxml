@@ -8,8 +8,8 @@
     <children>
         <TableView fx:id="tabled" layoutX="36.0" layoutY="55.0" prefHeight="240.0" prefWidth="540.0">
             <columns>
-                <TableColumn fx:id="termekColumn" prefWidth="97.0" text="Termék id" />
-                <TableColumn fx:id="genreCount" prefWidth="118.0" text="Termék neve" />
+                <TableColumn fx:id="termekColumn" prefWidth="97.0" text="termék neve" />
+                <TableColumn fx:id="genreCount" prefWidth="118.0" text="alműfajok száma" />
             </columns>
         </TableView>
         <Label layoutX="169.0" layoutY="18.0" text="A több alműfajjal rendelkező termékek nevei, és alműfajainak száma.">

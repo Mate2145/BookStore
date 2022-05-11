@@ -8,8 +8,8 @@
    <children>
       <TableView fx:id="tabled" layoutX="19.0" layoutY="61.0" prefHeight="317.0" prefWidth="563.0">
         <columns>
-          <TableColumn fx:id="storeColumn" prefWidth="190.0" text="Áruház neve" />
-          <TableColumn fx:id="quantityColumn" prefWidth="166.0" text="Megrendelések száma" />
+          <TableColumn fx:id="storeColumn" prefWidth="190.0" text="áruház neve" />
+          <TableColumn fx:id="quantityColumn" prefWidth="166.0" text="megrendelések száma" />
         </columns>
       </TableView>
       <Button layoutX="276.0" layoutY="390.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />

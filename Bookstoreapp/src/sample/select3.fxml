@@ -14,9 +14,9 @@
       </Label>
       <TableView fx:id="tabled" layoutX="19.0" layoutY="78.0" prefHeight="235.0" prefWidth="567.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="149.0" text="Termék neve" />
-          <TableColumn fx:id="genreColumn" prefWidth="126.0" text="Főműfaj neve" />
-            <TableColumn fx:id="countColumn" prefWidth="183.0" text="Megrendelések száma" />
+          <TableColumn fx:id="nameColumn" prefWidth="149.0" text="termék neve" />
+          <TableColumn fx:id="genreColumn" prefWidth="126.0" text="főműfaj neve" />
+            <TableColumn fx:id="countColumn" prefWidth="183.0" text="megrendelések száma" />
         </columns>
       </TableView>
    </children>

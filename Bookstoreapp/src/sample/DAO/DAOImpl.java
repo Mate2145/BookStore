@@ -1009,7 +1009,7 @@ public class DAOImpl {
                     "\tINNER JOIN \n" +
                     "\t(SELECT id as s_id, COUNT(*) as s_count FROM Mufaja GROUP BY id) \n" +
                     "\tON Termek.id = s_id \n" +
-                    "\tWHERE s_count >= 2;";
+                    "\tWHERE s_count >= 2";
             rs = stmt.executeQuery(sql);
             while (rs.next())
             {
@@ -1037,7 +1037,7 @@ public class DAOImpl {
                     "\tINNER JOIN \n" +
                     "\t(SELECT id as s_id, COUNT(*) as s_count FROM Szerzoje GROUP BY id) \n" +
                     "\tON Termek.id = s_id \n" +
-                    "\tWHERE s_count >= 2;";
+                    "\tWHERE s_count >= 2";
             rs = stmt.executeQuery(sql);
             while (rs.next())
             {
@@ -1065,7 +1065,7 @@ public class DAOImpl {
                     "\t(SELECT id AS s_id, nev as s_nev FROM Termek \n" +
                     "\tWHERE EXISTS (SELECT id, COUNT(*) AS s_count FROM Keszleten \n" +
                     "\tGROUP BY id HAVING COUNT(*) > 1)) \n" +
-                    "\tON Konyv.id = s_id;";
+                    "\tON Konyv.id = s_id";
             rs = stmt.executeQuery(sql);
             while (rs.next())
             {

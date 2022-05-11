@@ -8,7 +8,7 @@
     <children>
         <TableView fx:id="tabled" layoutX="19.0" layoutY="46.0" prefHeight="305.0" prefWidth="563.0">
             <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="561.0" text="Termék neve" />
+                <TableColumn fx:id="nameColumn" prefWidth="561.0" text="termék neve" />
             </columns>
         </TableView>
       <Button layoutX="276.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />

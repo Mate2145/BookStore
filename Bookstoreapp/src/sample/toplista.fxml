@@ -13,8 +13,8 @@
     <children>
         <TableView fx:id="tabled" layoutX="19.0" layoutY="34.0" prefHeight="317.0" prefWidth="563.0">
             <columns>
-                <TableColumn fx:id="productColumn" prefWidth="75.0" text="Store" />
-                <TableColumn fx:id="sidColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="productColumn" prefWidth="75.0" text="áruháu" />
+                <TableColumn fx:id="sidColumn" prefWidth="75.0" text="termék ID" />
                 <TableColumn fx:id="sdbColumn" prefWidth="75.0" text="db" />
             </columns>
         </TableView>
