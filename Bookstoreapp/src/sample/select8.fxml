@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.controller.select8Controller"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <TableView fx:id="tabled" layoutX="36.0" layoutY="55.0" prefHeight="240.0" prefWidth="540.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="118.0" text="Termék neve" /> 
+            </columns>
+        </TableView>
+        <Label layoutX="97.0" layoutY="21.0" text="A több helyen Készleten levő könyvek.">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+        <Button layoutX="276.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBack" text="Vissza" />
+    </children>
+
+
+</AnchorPane>

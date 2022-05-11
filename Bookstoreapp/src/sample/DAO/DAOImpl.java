@@ -998,7 +998,88 @@ public class DAOImpl {
         return list;
     }
 
+    public List<Select6> getSelect6()
+    {
+        List<Select6> list = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Termek.nev, s_count as \"Alműfajok száma\" FROM Termek\n" +
+                    "\tINNER JOIN \n" +
+                    "\t(SELECT id as s_id, COUNT(*) as s_count FROM Mufaja GROUP BY id) \n" +
+                    "\tON Termek.id = s_id \n" +
+                    "\tWHERE s_count >= 2;";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select6 product = new Select6(rs.getString(1),rs.getInt(2));
+                list.add(product);
+            }
 
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public List<Select7> getSelect7()
+    {
+        List<Select7> list = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT Termek.nev, s_count as \"Szerzők száma\" FROM Termek\n" +
+                    "\tINNER JOIN \n" +
+                    "\t(SELECT id as s_id, COUNT(*) as s_count FROM Szerzoje GROUP BY id) \n" +
+                    "\tON Termek.id = s_id \n" +
+                    "\tWHERE s_count >= 2;";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select7 product = new Select7(rs.getString(1),rs.getInt(2));
+                list.add(product);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public List<Select8> getSelect8()
+    {
+        List<Select8> list = new ArrayList<>();
+        try
+        {
+            Connection conn = ods.getConnection(user, pass);
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "SELECT s_nev FROM Konyv INNER JOIN \n" +
+                    "\t(SELECT id AS s_id, nev as s_nev FROM Termek \n" +
+                    "\tWHERE EXISTS (SELECT id, COUNT(*) AS s_count FROM Keszleten \n" +
+                    "\tGROUP BY id HAVING COUNT(*) > 1)) \n" +
+                    "\tON Konyv.id = s_id;";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                Select8 product = new Select8(rs.getString(1));
+                list.add(product);
+            }
+
+        } catch (Exception ex)
+        {
+            System.out.println("Bajom van");
+            ex.printStackTrace();
+        }
+        return list;
+    }
 
 
 
